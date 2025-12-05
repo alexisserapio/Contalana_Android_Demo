@@ -27,7 +27,10 @@
     <string name="bName.alert.title">Enter a name for your business</string>
     <string name="bName.alert.empty">The business name is empty</string>
     <string name="bName.alert.notValid">Use between 5 and 32 characters, including letters, numbers, and the symbols: . _ $ &amp; /</string>
-    <string name="bName.alert.button">Ok</string>
+    <string name="bName.alert.button">OK</string>
+
+    <!-- SignIn Activity -->
+    <string name="signin.title">Welcome,</string>
 
     <!-- Form Activity -->
     <string name="formString">We are ready to start a new age in %1$s!</string>

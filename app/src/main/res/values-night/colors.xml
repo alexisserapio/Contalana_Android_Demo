@@ -12,4 +12,6 @@
     <color name="textColor">#FFFFFFFF</color>
     <color name="backgroundColor">#222A31</color>
     <color name="grey">#6A6A6A</color>
+    <color name="etBackground">#303A41</color>
+    <color name="etBorderColor">#303A41</color>
 </resources>

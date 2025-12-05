@@ -14,10 +14,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Contalana_Prototipe">
         <activity
+            android:name=".a.ui.SigninActivity"
+            android:exported="false" />
+        <activity
             android:name=".a.ui.TabBarActivity"
             android:exported="false" />
         <activity
-            android:name=".a.ui.SignInActivity"
+            android:name=".a.ui.LoginActivity"
             android:exported="false" />
         <activity
             android:name=".a.ui.FormActivity"
@@ -29,8 +32,8 @@
             android:name=".a.ui.InformativeActivity"
             android:exported="false" />
         <activity
-            android:name=".a.ui.welcomeActivity"
-            android:exported="false"></activity>
+            android:name=".a.ui.WelcomeActivity"
+            android:exported="false" />
         <activity
             android:name=".a.ui.LauncherSelectorActivity"
             android:exported="true">

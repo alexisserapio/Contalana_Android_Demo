@@ -27,7 +27,17 @@
     <string name="bName.alert.title">Ingresa un nombre válido</string>
     <string name="bName.alert.empty">El nombre de tu negocio está vacío</string>
     <string name="bName.alert.notValid">Utiliza entre 5 y 32 caracteres, incluyendo letras, números y los simbolos: . _ $ &amp; /</string>
-    <string name="bName.alert.button">Aceptar"</string>
+    <string name="bName.alert.button">Aceptar</string>
+
+    <!-- SignIn Activity -->
+    <string name="signin.title">Bienvenido,</string>
+    <string name="signin.subtitle">Registrate para manejar todo tu negocio con un solo tap.</string>
+    <string name="signin.username.label">Nombre de Usuario</string>
+    <string name="signin.username.hint">Juan López</string>
+    <string name="signin.mail.label">Correo Electrónico (Email)</string>
+    <string name="signin.mail.hint">ejemplo@mail.com</string>
+    <string name="signin.password.hint">Ingresa al menos 8 caracteres</string>
+    <string name="signin.password.label">Contraseña</string>
 
     <!-- Form Activity -->
     <string name="formString">¡Estamos listos para empezar una nueva etapa en %1$s!</string>

@@ -14,14 +14,13 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.net.toUri
-import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.alexisserapio.contalana_prototipe.R
 import com.alexisserapio.contalana_prototipe.a.utils.Constants
 import com.alexisserapio.contalana_prototipe.databinding.ActivityWelcomeBinding
 
-class welcomeActivity : AppCompatActivity() {
+class WelcomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityWelcomeBinding
 
@@ -170,7 +169,7 @@ class welcomeActivity : AppCompatActivity() {
         // Primer clickable span
         val signInSpan = object : ClickableSpan() {
             override fun onClick(widget: View) {
-                val segueToSignIn = Intent(this@welcomeActivity, SignInActivity::class.java)
+                val segueToSignIn = Intent(this@WelcomeActivity, LoginActivity::class.java)
                 widget.context.startActivity(segueToSignIn)
 
             }

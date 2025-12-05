@@ -102,8 +102,8 @@ class BNameActivity : AppCompatActivity() {
                 lifecycleScope.launch (Dispatchers.IO){
 
                     saveValues(binding.etBName.text.toString())
-                    val segueToFormActivity = Intent(this@BNameActivity, FormActivity::class.java)
-                    startActivity(segueToFormActivity)
+                    val segueToSignInActivity = Intent(this@BNameActivity, SigninActivity::class.java)
+                    startActivity(segueToSignInActivity)
                     finish()
                 }
 

@@ -1,13 +1,9 @@
 package com.alexisserapio.contalana_prototipe.a.ui
 
-import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.content.Intent
 import android.os.Bundle
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import androidx.datastore.preferences.core.Preferences
-import androidx.datastore.preferences.core.booleanPreferencesKey
-import androidx.datastore.preferences.preferencesDataStore
 
 import androidx.lifecycle.lifecycleScope
 import com.alexisserapio.contalana_prototipe.a.data.DataStoreManager
@@ -24,21 +20,23 @@ class LauncherSelectorActivity : AppCompatActivity() {
         lifecycleScope.launch {
             // Leemos las preferencias guardadas
             val preferences = dataStore.data.first()
+
             val businessExists = preferences[DataStoreManager.BUSINESS_EXISTS] ?: false
             val formAnswered = preferences[DataStoreManager.FORM_ANSWERED] ?: false
+            val userExists = preferences[DataStoreManager.USER_EXISTS] ?: false
 
-            if (formAnswered && businessExists) {
-                // Si el negocio ya existe, abrimos la activity del form
-                startActivity(Intent(this@LauncherSelectorActivity, TabBarActivity::class.java))
+            if(!businessExists){
+                startActivity(Intent(this@LauncherSelectorActivity, WelcomeActivity::class.java))
 
-            } else if (businessExists){
+            } else if (!userExists){
+                startActivity(Intent(this@LauncherSelectorActivity, SigninActivity::class.java))
 
+            } else if (!formAnswered){
                 startActivity(Intent(this@LauncherSelectorActivity, FormActivity::class.java))
 
-            }
-            else {
-                // Si no existe, abrimos el flujo de configuración
-                startActivity(Intent(this@LauncherSelectorActivity, welcomeActivity::class.java))
+            }else{
+                startActivity(Intent(this@LauncherSelectorActivity, LoginActivity::class.java))
+
             }
 
             finish() // Cerramos esta activity para no volver a ella
