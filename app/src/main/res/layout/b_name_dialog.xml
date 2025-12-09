@@ -34,7 +34,7 @@
         android:layout_marginStart="50dp"
         android:layout_marginEnd="50dp"
         android:text="Aceptar"
-        android:backgroundTint="@color/CL_darkGreen"
+        android:backgroundTint="@color/cl_darkGreen"
         android:textColor="@color/white"
         />
 

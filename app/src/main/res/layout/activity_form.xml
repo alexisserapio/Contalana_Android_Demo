@@ -16,7 +16,7 @@
         android:fontFamily="sans-serif-black"
         android:gravity="center"
         android:hint="@string/formString"
-        android:textColor="@color/CL_darkGreen"
+        android:textColor="@color/cl_darkGreen"
         android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
@@ -54,7 +54,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/bottomLabel"
-        android:backgroundTint="@color/CL_darkBlue"
+        android:backgroundTint="@color/cl_darkBlue"
         app:layout_constraintVertical_bias="0.95"
         />
 

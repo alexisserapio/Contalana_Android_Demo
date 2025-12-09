@@ -1,4 +1,4 @@
-package com.alexisserapio.contalana_prototipe.a.model
+package com.alexisserapio.contalana_prototipe.a.data.model
 
 import java.io.Serializable
 

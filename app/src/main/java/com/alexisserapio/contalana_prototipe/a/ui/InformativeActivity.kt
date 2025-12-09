@@ -13,7 +13,7 @@ import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.alexisserapio.contalana_prototipe.R
-import com.alexisserapio.contalana_prototipe.a.model.informativePage
+import com.alexisserapio.contalana_prototipe.a.data.model.informativePage
 import com.alexisserapio.contalana_prototipe.databinding.ActivityInformativeBinding
 import com.google.android.material.tabs.TabLayout
 

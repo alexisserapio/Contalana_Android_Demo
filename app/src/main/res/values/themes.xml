@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.Contalana_Prototipe" parent = "Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <item name="colorPrimary">@color/CL_lightGreen</item>
+        <item name="colorPrimary">@color/cl_lightGreen</item>
     </style>
 
     <style name="DialogFadeAnimation" parent="Theme.AppCompat.Light.Dialog.Alert">

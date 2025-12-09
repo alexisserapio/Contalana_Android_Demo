@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.ksp.contalana)
+    alias(libs.plugins.google.gms.google.services)
 }
 
 android {
@@ -65,6 +66,9 @@ dependencies {
     implementation(libs.androidx.core.splashscreen)
     //Room
     implementation(libs.androidx.room.ktx)
+
+    implementation(libs.firebase.auth)
+
     ksp(libs.androidx.room.compiler)
 
     testImplementation(libs.junit)

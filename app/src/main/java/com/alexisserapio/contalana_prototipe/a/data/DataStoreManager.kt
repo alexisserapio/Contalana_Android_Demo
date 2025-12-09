@@ -10,7 +10,6 @@ val Context.dataStore by preferencesDataStore(name = "USER_PREFERENCES_BUSSINESN
 object DataStoreManager {
     val BUSINESS_NAME = stringPreferencesKey("businessName")
     val BUSINESS_EXISTS = booleanPreferencesKey("businessExists")
-    val PRODUCT_EXISTS = booleanPreferencesKey("productExists")
     val FORM_ANSWERED = booleanPreferencesKey("formAnswered")
     val USER_EXISTS = booleanPreferencesKey("userExists")
 }

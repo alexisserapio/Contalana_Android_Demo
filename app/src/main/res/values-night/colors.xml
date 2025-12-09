@@ -4,14 +4,16 @@
     <color name="white">#FFFFFFFF</color>
     <color name="darkestGray">#6D6D6D</color>
     <color name="backgroundGreen">#7EFF9C</color>
-    <color name="CL_darkBlue">#0B76A0</color>
-    <color name="CL_darkGreen">#5AC135</color>
-    <color name="CL_lightBlue">#61CBF4</color>
-    <color name="CL_lightGreen">#8ED973</color>
+    <color name="cl_darkBlue">#0B76A0</color>
+    <color name="cl_darkGreen">#5AC135</color>
+    <color name="cl_lightBlue">#61CBF4</color>
+    <color name="cl_lightGreen">#8ED973</color>
     <color name="darkestGreen">#004E03</color>
     <color name="textColor">#FFFFFFFF</color>
     <color name="backgroundColor">#222A31</color>
     <color name="grey">#6A6A6A</color>
     <color name="etBackground">#303A41</color>
     <color name="etBorderColor">#303A41</color>
+    <color name="errorColor">#D84545</color>
+    <color name="successColor">#5AC135</color>
 </resources>

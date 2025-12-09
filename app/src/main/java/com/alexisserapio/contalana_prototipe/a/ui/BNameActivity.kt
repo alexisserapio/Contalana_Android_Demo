@@ -150,7 +150,6 @@ class BNameActivity : AppCompatActivity() {
         dataStore.edit { preferences ->
             preferences[DataStoreManager.BUSINESS_NAME] = businessName
             preferences[DataStoreManager.BUSINESS_EXISTS] = true
-            preferences[DataStoreManager.PRODUCT_EXISTS] = false
         }
     }
 

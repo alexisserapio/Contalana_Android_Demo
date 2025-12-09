@@ -97,7 +97,7 @@ class WelcomeActivity : AppCompatActivity() {
 
             override fun updateDrawState(ds: TextPaint) {
                 super.updateDrawState(ds)
-                ds.color = ContextCompat.getColor(binding.welcomeTerms.context, R.color.CL_darkBlue)
+                ds.color = ContextCompat.getColor(binding.welcomeTerms.context, R.color.cl_darkBlue)
                 ds.isUnderlineText = true
                 ds.typeface = Typeface.create(ds.typeface, Typeface.BOLD)
             }
@@ -126,7 +126,7 @@ class WelcomeActivity : AppCompatActivity() {
 
             override fun updateDrawState(ds: TextPaint) {
                 super.updateDrawState(ds)
-                ds.color = ContextCompat.getColor(binding.welcomeTerms.context, R.color.CL_darkBlue)
+                ds.color = ContextCompat.getColor(binding.welcomeTerms.context, R.color.cl_darkBlue)
                 ds.isUnderlineText = true
                 ds.typeface = Typeface.create(ds.typeface, Typeface.BOLD)
             }
@@ -177,7 +177,7 @@ class WelcomeActivity : AppCompatActivity() {
             override fun updateDrawState(ds: TextPaint) {
                 super.updateDrawState(ds)
 
-                ds.color = ContextCompat.getColor(binding.welcomeSignIn.context, R.color.CL_darkBlue)
+                ds.color = ContextCompat.getColor(binding.welcomeSignIn.context, R.color.cl_darkBlue)
                 ds.isUnderlineText = false
                 ds.typeface = Typeface.create(ds.typeface, Typeface.BOLD)
             }
