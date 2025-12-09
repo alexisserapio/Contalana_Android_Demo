@@ -142,7 +142,13 @@ class SigninActivity : AppCompatActivity() {
 
         updateButtonState()
 
-        val currentTimer = if (editText == binding.etMail) emailValidationTimer else passwordValidationTimer
+        val currentTimer = if (editText == binding.etUsername){
+            userNameValidatorTimer
+        } else if (editText == binding.etMail){
+            emailValidationTimer
+        }else{
+            passwordValidationTimer
+        }
 
         currentTimer?.cancel()
 
@@ -274,7 +280,7 @@ class SigninActivity : AppCompatActivity() {
         when (errorCode) {
 
             "ERROR_INVALID_CREDENTIAL", "ERROR_WRONG_PASSWORD" -> {
-                createSnackbar(getString(R.string.passwordOrMailNotValid), false)
+                createSnackbar(getString(R.string.signIn_error_pswOrMailNotValid), true)
                 restartUI()
                 binding.etPassword.requestFocus()
 
@@ -282,41 +288,48 @@ class SigninActivity : AppCompatActivity() {
 
             "ERROR_ACCOUNT_EXISTS_WITH_DIFFERENT_CREDENTIAL" -> {
                 //An account already exists with the same email address but different sign-in credentials. Sign in using a provider associated with this email address.
-                errorSnackbar(getString(R.string.accountAlreadyExists))
+                createSnackbar(getString(R.string.signIn_error_accountWithOtherProvider), true)
                 restartUI()
+
+                TODO("Vincular ambos proveedores a ambos correos")
+
             }
 
             "ERROR_EMAIL_ALREADY_IN_USE" -> {
-                errorSnackbar(getString(R.string.emailAlreadyExists))
+                createSnackbar(getString(R.string.signIn_error_accountAlreadyExists), true)
                 restartUI()
                 binding.etMail.requestFocus()
             }
 
             "ERROR_USER_TOKEN_EXPIRED" -> {
-                errorSnackbar(getString(R.string.userSessionExpired))
+
+                val snackbar = Snackbar.make(
+                    binding.main,
+                    getString(R.string.signIn_error_sessionExpired),
+                    Snackbar.LENGTH_SHORT
+                ).show()
+
                 restartUI()
             }
 
             "ERROR_USER_NOT_FOUND" -> {
-                errorSnackbar(getString(R.string.noUserExists))
+                createSnackbar(getString(R.string.signIn_error_noAccount), true)
                 restartUI()
             }
 
-            /*"ERROR_WEAK_PASSWORD" -> {
-                errorSnackbar(get)
-                message("La contraseña porporcionada es inválida")
-                binding.tietContrasena.error =
-                    "La contraseña debe de tener por lo menos 6 caracteres"
-                binding.tietContrasena.requestFocus()
-            }*/
 
             "NO_NETWORK" -> {
-                errorSnackbar(getString(R.string.noConnection))
+                val snackbar = Snackbar.make(
+                    binding.main,
+                    getString(R.string.signIn_error_noConnection),
+                    Snackbar.LENGTH_SHORT
+                ).show()
+
                 restartUI()
             }
 
             else -> {
-                errorSnackbar(getString(R.string.generalError))
+                createSnackbar(getString(R.string.signIn_error_generalError), true)
                 restartUI()
             }
         }
@@ -349,6 +362,20 @@ class SigninActivity : AppCompatActivity() {
                 editText.requestFocus()
             }
             return
+        }
+    }
+
+    private fun restartUI(){
+        binding.apply {
+            progressBar.visibility = View.INVISIBLE
+
+            tvUsername.visibility = View.VISIBLE
+            etUsername.visibility = View.VISIBLE
+            tvMail.visibility = View.VISIBLE
+            etMail.visibility = View.VISIBLE
+            tvPassword.visibility = View.VISIBLE
+            etPassword.visibility = View.VISIBLE
+
         }
     }
 

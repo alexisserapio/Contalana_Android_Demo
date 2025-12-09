@@ -13,8 +13,10 @@ import com.alexisserapio.contalana_prototipe.R
 import com.alexisserapio.contalana_prototipe.a.data.DataStoreManager
 import com.alexisserapio.contalana_prototipe.a.data.dataStore
 import com.alexisserapio.contalana_prototipe.databinding.ActivityFormBinding
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class FormActivity : AppCompatActivity() {
     private lateinit var binding: ActivityFormBinding
@@ -39,23 +41,24 @@ class FormActivity : AppCompatActivity() {
             val businessName = preferences[DataStoreManager.BUSINESS_NAME] ?: ""
             binding.topLabel.text = getString(R.string.formString, businessName)
 
+        }
 
         binding.formButton.setOnClickListener {
 
-            lifecycleScope.launch {
-                saveValues()
-                val segueToTabBarActivity = Intent(this@FormActivity, TabBarActivity::class.java)
-                startActivity(segueToTabBarActivity)
-                finish()
+            lifecycleScope.launch(Dispatchers.IO) {
+                dataStore.edit { preferences ->
+                    preferences[DataStoreManager.FORM_ANSWERED] = true
+                }
+
+                withContext(Dispatchers.Main) {
+                    val segueToTabBarActivity =
+                        Intent(this@FormActivity, TabBarActivity::class.java)
+                    startActivity(segueToTabBarActivity)
+                    finish()
+                }
             }
         }
-        }
 
-    }
 
-    private suspend fun saveValues() {
-        dataStore.edit { preferences ->
-            preferences[DataStoreManager.FORM_ANSWERED] = true
-        }
     }
 }

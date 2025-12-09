@@ -35,12 +35,6 @@ import kotlinx.coroutines.launch
 class BNameActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityBnameBinding
-    //Para las shared Preferences
-    private lateinit var sp: SharedPreferences
-
-    //Para el cifrado
-    private lateinit var aead: Aead
-    private lateinit var encryptedPrefs: EncryptedPrefs
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

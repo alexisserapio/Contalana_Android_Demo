@@ -38,14 +38,30 @@
     <string name="signin.mail.hint">ejemplo@mail.com</string>
     <string name="signin.password.hint">Ingresa al menos 8 caracteres</string>
     <string name="signin.password.label">Contraseña</string>
+    <string name="signIn.button">Registrarse</string>
+    <string name="signIn.confirmationMail.successful">¡Registro Exitoso!\n Se ha enviado un correo de verificación al correo ingresado</string>
+    <string name="signIn.confirmationMail.error">Ups, ha habido un error al enviar el correo de verificación, intentalo nuevamente</string>
+    <string name="signIn.register.successful">%1$s, tu registro ha sido exitoso.</string>
     <string name="signIn.error.requiredLength">El campo debe contener 8 caracteres o más</string>
     <string name="signIn.error.maxLength">El campo no puede contener más de 26 caracteres</string>
     <string name="signIn.error.notValid">Por favor, asegúrate de que el campo cumpla con los formatos solicitados</string>
-    <string name="signIn.button">Registrarse</string>
-    <string name="signIn.confirmationMail.successful">¡Registro Exitoso!\n Se ha enviado un correo de verificación al correo ingresado</string>
-    <string name="singIn.confirmationMail.error">Ups, ha habido un error al enviar el correo de verificación, intentalo nuevamente</string>
-    <string name="signIn.register.successful">%1$s, tu registro ha sido exitoso.</string>
     <string name="signIn.error.pswOrMailNotValid">Ups, La contraseña o el correo ingresado no son válidos, intentalo nuevamente</string>
+    <string name="signIn.error.accountWithOtherProvider">Una cuenta ya existe con el mismo correo, pero con diferente proveedor</string>
+    <string name="signIn.error.accountAlreadyExists">El correo electrónico ya está en uso con otra cuenta</string>
+    <string name="signIn.error.sessionExpired">La sesión ha expirado. Ingresa nuevamente para continuar</string>
+    <string name="signIn.error.noAccount">No existe el usuario con la información proporcionada, intentalo de nuevo</string>
+    <string name="signIn.error.noConnection">Red no disponible, comprueba tu conexión a Internet y vuelve a intentarlo</string>
+    <string name="signIn.error.generalError">Ups, ocurrió un error.\n Intentalo nuevamente en unos minutos</string>
+
+    <!-- LogIn Activity -->
+    <string name="logIn.title">¡Bienvenido de vuelta!</string>
+    <string name="logIn.subtitle">Inicia sesión para seguir manejando tu negocio, estés donde estés.</string>
+    <string name="logIn.mail.label">Correo electrónico (Email)</string>
+    <string name="logIn.mail.hint">ejemplo@mail.com</string>
+    <string name="logIn.password.label">Contraseña</string>
+    <string name="logIn.password.hint">Ingresa al menos 8 caracteres</string>
+    <string name="logIn.button">Iniciar Sesión</string>
+    <string name="logIn.forgottenPassword">¿Olvidaste tu constraseña?</string>
 
     <!-- Form Activity -->
     <string name="formString">¡Estamos listos para empezar una nueva etapa en %1$s!</string>
