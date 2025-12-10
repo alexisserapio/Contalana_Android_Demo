@@ -62,11 +62,27 @@
     <string name="logIn.password.hint">Ingresa al menos 8 caracteres</string>
     <string name="logIn.button">Iniciar Sesión</string>
     <string name="logIn.forgottenPassword">¿Olvidaste tu constraseña?</string>
+    <string name="logIn.alert.title">Reestablecer Contraseña</string>
+    <string name="logIn.alert.message">Ingresa tu correo para recibir un enlace de reestablecimiento de tu contraseña</string>
+    <string name="logIn.alert.done">Envíar</string>
+    <string name="logIn.alert.doneMessage">El enlace de reestablecimiento ha sido enviado</string>
+    <string name="logIn.alert.failMessage">No se ha podido envíar el enlace de reestablecimiento, por favor intentalo de nuevo</string>
+    <string name="logIn.alert.invalidMail">Ups, el correo ingresado no es válido</string>
+    <string name="logIn.alert.cancel">Cancelar</string>
+    <string name="logIn.success">¡Bienvenido %1$s!</string>
+    <string name="logIn.error.pswOrMailNotValid">Ups, La contraseña o el correo ingresado no son válidos, intentalo nuevamente</string>
+    <string name="logIn.error.accountWithOtherProvider">Una cuenta ya existe con el mismo correo, pero con diferente proveedor</string>
+    <string name="logIn.error.sessionExpired">La sesión ha expirado. Ingresa nuevamente para continuar</string>
+    <string name="logIn.error.noAccount">No existe el usuario con la información proporcionada, intentalo de nuevo</string>
+    <string name="logIn.error.noConnection">Red no disponible, comprueba tu conexión a Internet y vuelve a intentarlo</string>
+    <string name="logIn.error.generalError">Ups, ocurrió un error.\n Intentalo nuevamente en unos minutos</string>
 
     <!-- Form Activity -->
-    <string name="formString">¡Estamos listos para empezar una nueva etapa en %1$s!</string>
-    <string name="buildingString">Aquí va un formulario para conocer más datos del negocio… trabajo en progreso!</string>
-    <string name="formButton">Continuar</string>
+    <string name="form.title">¡Aquí empieza lo mejor para %1$s!</string>
+    <string name="form.subtitle">Permitenos recopilar algo de información sobre ti.</string>
+    <string name="form.label.title">¿Haces uso de Redes Sociales?</string>
+    <string name="form.label.subtitle">Esto nos ayuda a mejorar nuestras estimaciones que podemos ofrecerte gratis en la app</string>
+    <string name="form.button">¡Empezar a gestionar mi negocio!</string>
 
     <!-- Tab Bar Activity -->
     <string name="item.one">Inicio</string>
@@ -75,7 +91,9 @@
     <string name="item.four">Planeación</string>
 
     <!-- Home Screen -->
-    <string name="homeScene.welcome">Bienvenido %1$s</string>
+    <string name="homeScene.welcome">Bienvenido, %1$s</string>
+    <string name="homeScene.subtitle">Tu negocio hasta hoy:</string>
+    <string name="homeScene.productsCount">Tienes %1$d existencias en tu Inventario</string>
 
     <!-- Inventory Screen -->
     <string name="inventoryScene.welcome">Inventario de %1$s</string>

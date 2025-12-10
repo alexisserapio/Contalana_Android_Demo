@@ -39,7 +39,7 @@ class FormActivity : AppCompatActivity() {
         lifecycleScope.launch {
             val preferences = dataStore.data.first() // suspende hasta obtener el primer valor
             val businessName = preferences[DataStoreManager.BUSINESS_NAME] ?: ""
-            binding.topLabel.text = getString(R.string.formString, businessName)
+            binding.ivFormTitle.text = getString(R.string.form_title, businessName)
 
         }
 

@@ -1,9 +1,15 @@
 package com.alexisserapio.contalana_prototipe.a.ui.fragments
 
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.enableEdgeToEdge
+import androidx.core.graphics.ColorUtils
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat.enableEdgeToEdge
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.alexisserapio.contalana_prototipe.R
@@ -20,10 +26,11 @@ class HomeFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -31,10 +38,21 @@ class HomeFragment : Fragment() {
 
         lifecycleScope.launch {
             val preferences = requireContext().dataStore.data.first() // suspende hasta obtener el primer valor
+            val userName = preferences[DataStoreManager.USER_NAME] ?: ""
             val businessName = preferences[DataStoreManager.BUSINESS_NAME] ?: ""
-            binding.tvHomeWelcome.text = getString(R.string.homeScene_welcome, businessName)
 
+            binding.tvHomeTitle.text = getString(R.string.homeScene_welcome, userName)
+            binding.tvBusinessName.text = businessName
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val color = (requireView().background as ColorDrawable).color
+        val isLight = ColorUtils.calculateLuminance(color) > 0.5
+
+        WindowInsetsControllerCompat(requireActivity().window, requireActivity().window.decorView)
+            .isAppearanceLightStatusBars = isLight
     }
 
 

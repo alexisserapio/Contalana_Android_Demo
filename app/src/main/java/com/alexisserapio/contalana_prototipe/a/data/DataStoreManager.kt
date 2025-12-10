@@ -11,5 +11,7 @@ object DataStoreManager {
     val BUSINESS_NAME = stringPreferencesKey("businessName")
     val BUSINESS_EXISTS = booleanPreferencesKey("businessExists")
     val FORM_ANSWERED = booleanPreferencesKey("formAnswered")
+    val USER_NAME = stringPreferencesKey("userName")
     val USER_EXISTS = booleanPreferencesKey("userExists")
+
 }

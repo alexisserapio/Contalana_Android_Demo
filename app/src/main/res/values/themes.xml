@@ -3,10 +3,11 @@
     <style name="Theme.Contalana_Prototipe" parent = "Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <item name="colorPrimary">@color/cl_lightGreen</item>
+        <item name="android:windowBackground">@color/backgroundColor</item>
     </style>
 
     <style name="DialogFadeAnimation" parent="Theme.AppCompat.Light.Dialog.Alert">
-        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowBackground">@color/backgroundColor</item>
         <item name="android:windowAnimationStyle">@style/DialogWindowAnimation</item>
     </style>
 

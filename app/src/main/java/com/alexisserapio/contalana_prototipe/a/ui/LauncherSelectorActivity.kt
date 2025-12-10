@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 
 import androidx.lifecycle.lifecycleScope
+import com.alexisserapio.contalana_prototipe.R
 import com.alexisserapio.contalana_prototipe.a.data.DataStoreManager
 import com.alexisserapio.contalana_prototipe.a.data.dataStore
 import kotlinx.coroutines.flow.first
@@ -16,6 +17,8 @@ class LauncherSelectorActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         installSplashScreen()
+
+        setContentView(R.layout.activity_launcher_selector)
 
         lifecycleScope.launch {
             // Leemos las preferencias guardadas

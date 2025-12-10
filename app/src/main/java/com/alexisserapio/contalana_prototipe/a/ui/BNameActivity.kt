@@ -1,8 +1,6 @@
 package com.alexisserapio.contalana_prototipe.a.ui
 
-import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -16,11 +14,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.datastore.preferences.core.Preferences
-import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
-import androidx.datastore.preferences.core.stringPreferencesKey
-import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.lifecycleScope
 import com.alexisserapio.contalana_prototipe.R
 import com.alexisserapio.contalana_prototipe.a.data.DataStoreManager
@@ -53,7 +47,6 @@ class BNameActivity : AppCompatActivity() {
         // Configurar el EditText para mostrar el botón "Done"
         binding.etBName.imeOptions = EditorInfo.IME_ACTION_DONE
         binding.etBName.setSingleLine(true)
-        binding.bnameButton.isEnabled = false
 
         // Detectar cuando el usuario presiona Done
         binding.etBName.setOnEditorActionListener { v, actionId, _ ->

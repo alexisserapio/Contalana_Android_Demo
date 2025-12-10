@@ -16,4 +16,5 @@
     <color name="etBorderColor">#303A41</color>
     <color name="errorColor">#D84545</color>
     <color name="successColor">#5AC135</color>
+    <color name="contrastGrey">#F2F2F7</color>
 </resources>

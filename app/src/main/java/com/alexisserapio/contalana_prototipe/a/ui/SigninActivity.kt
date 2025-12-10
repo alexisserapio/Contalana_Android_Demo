@@ -12,6 +12,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.datastore.preferences.core.edit
 import androidx.lifecycle.lifecycleScope
 import com.alexisserapio.contalana_prototipe.R
 import com.alexisserapio.contalana_prototipe.a.data.DataStoreManager
@@ -21,8 +22,10 @@ import com.google.android.gms.tasks.Task
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import kotlin.math.sign
 import kotlin.toString
 
@@ -134,8 +137,27 @@ class SigninActivity : AppCompatActivity() {
     }
 
     private fun actionLoginSuccessful() {
-        startActivity(Intent(this, FormActivity::class.java))
-        finish()
+        lifecycleScope.launch {
+            val preferences = dataStore.data.first()
+            val formAnswered = preferences[DataStoreManager.FORM_ANSWERED] ?: false
+
+            if(!formAnswered){
+                withContext(Dispatchers.Main) {
+                    val segueToTabBarActivity =
+                        Intent(this@SigninActivity, FormActivity::class.java)
+                    startActivity(segueToTabBarActivity)
+                    finish()
+                }
+            }else{
+                withContext(Dispatchers.Main) {
+                    val segueToTabBarActivity =
+                        Intent(this@SigninActivity, TabBarActivity::class.java)
+                    startActivity(segueToTabBarActivity)
+                    finish()
+                }
+            }
+
+        }
     }
 
     private fun isEditTextChanged(etText: String, editText: android.widget.EditText, regex: Regex){
@@ -182,6 +204,8 @@ class SigninActivity : AppCompatActivity() {
         val finalEmail = binding.etMail.text.toString().trim()
         val finalPassword = binding.etPassword.text.toString()
 
+        userName = finalClientName
+
         val clientCorrect = finalEmail.count() in minLength..maxLength &&
                 finalClientName.matches(
                     "^[A-Za-zÁÉÍÓÚáéíóúÑñ0-9 ._$&/\\\\\"'“”]+$".toRegex()
@@ -211,6 +235,12 @@ class SigninActivity : AppCompatActivity() {
                     etPassword.visibility = View.INVISIBLE
 
                     createUser(finalEmail, finalPassword, binding.signinButton)
+
+                    lifecycleScope.launch(Dispatchers.IO) {
+                        dataStore.edit { preferences ->
+                            preferences[DataStoreManager.USER_NAME] = finalClientName
+                        }
+                    }
                 }
 
             }
@@ -319,7 +349,8 @@ class SigninActivity : AppCompatActivity() {
 
 
             "NO_NETWORK" -> {
-                val snackbar = Snackbar.make(
+
+               Snackbar.make(
                     binding.main,
                     getString(R.string.signIn_error_noConnection),
                     Snackbar.LENGTH_SHORT
