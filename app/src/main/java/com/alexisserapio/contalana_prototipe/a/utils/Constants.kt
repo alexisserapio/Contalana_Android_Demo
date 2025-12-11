@@ -7,4 +7,5 @@ object Constants {
     const val DATABASE_PRODUCT_TABLE = "product_data_table"
     const val DATABASE_BUSINESS_TABLE = "business_data_table"
     const val DATABASE_CLIENTS_TABLE = "clients_data_table"
+
 }

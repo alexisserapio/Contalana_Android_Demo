@@ -113,6 +113,8 @@
     <string name="product.label.stock">Unidades</string>
     <string name="product.hint.stock">5</string>
     <string name="product.button">Agregar Producto</string>
+    <string name="product.success">¡Producto añadido exitosamente!</string>
+    <string name="product.error">Ups, hubo un error al crear el producto.\nIntentalo Nuevamente</string>
 
     <!-- Managment Screen -->
     <string name="managementScene.welcome">Gestión de %1$s</string>

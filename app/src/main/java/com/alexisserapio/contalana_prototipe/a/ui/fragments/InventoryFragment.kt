@@ -24,7 +24,7 @@ class InventoryFragment : Fragment() {
     private val binding get() = _binding!!
 
     private var products = mutableListOf<ProductEntity>()
-    private lateinit var productsRespository: ProductsRepository
+    private lateinit var productsRepository: ProductsRepository
     private lateinit var productAdapter: ProductAdapter
 
     override fun onCreateView(
@@ -39,7 +39,7 @@ class InventoryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        productsRespository =(requireContext().applicationContext as ContalanaApp).productsRepository
+        productsRepository =(requireContext().applicationContext as ContalanaApp).productsRepository
 
         lifecycleScope.launch {
             val preferences = requireContext().dataStore.data.first() // suspende hasta obtener el primer valor
@@ -49,11 +49,22 @@ class InventoryFragment : Fragment() {
         }
 
         binding.addFirstProductButton.setOnClickListener {
-            val fragmentAddProduct = AddProductFragment.newInstance()
-            val fragmentManager = childFragmentManager
+            val fragmentAddProduct = AddProductFragment{
+                updateUI()
+            }
+            //val fragmentAddProduct = AddProductFragment.newInstance()
 
-            fragmentAddProduct.show(fragmentManager, AddProductFragment.TAG)
+            fragmentAddProduct.show(childFragmentManager, "addProductFragment")
 
+        }
+
+        binding.addButton.setOnClickListener {
+            val fragmentAddProduct = AddProductFragment{
+                updateUI()
+            }
+            //val fragmentAddProduct = AddProductFragment.newInstance()
+
+            fragmentAddProduct.show(childFragmentManager, "addProductFragment")
         }
 
         productAdapter = ProductAdapter{ selectedProduct ->
@@ -71,7 +82,7 @@ class InventoryFragment : Fragment() {
     private fun updateUI(){
 
         lifecycleScope.launch {
-            products = productsRespository.getAllProducts()
+            products = productsRepository.getAllProducts()
 
             binding.tvNoProducts.visibility =
                 if(products.isNotEmpty()) View.INVISIBLE else View.VISIBLE

@@ -9,7 +9,7 @@ import com.alexisserapio.contalana_prototipe.a.utils.Constants
 data class ProductEntity(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "product_id")
-    var id: Int = 0,
+    var id: Long = 0,
 
     @ColumnInfo(name = "product_name")
     var productName: String,
@@ -18,7 +18,7 @@ data class ProductEntity(
     var productDescription: String,
 
     @ColumnInfo(name = "category")
-    var category: String,
+    var category: String?,
 
     @ColumnInfo(name = "stock")
     var stock: Int,
@@ -27,25 +27,25 @@ data class ProductEntity(
     var price: Double,
 
     @ColumnInfo(name = "supplier")
-    var supplier: Int,
+    var supplier: Int?,
 
     @ColumnInfo(name = "location")
-    var location: String,
+    var location: String?,
 
     @ColumnInfo(name = "added_product_date")
-    var addedProductDate: String,
+    var addedProductDate: String?,
 
     @ColumnInfo(name = "branch")
-    var branch: String,
+    var branch: String?,
 
     @ColumnInfo(name = "brand")
-    var brand: String,
+    var brand: String?,
 
     @ColumnInfo(name = "code")
-    var code: String,
+    var code: String?,
 
     @ColumnInfo(name = "last_purchase_date")
-    var lastPurchaseDate: String,
+    var lastPurchaseDate: String?,
 
     @ColumnInfo(name = "max_price")
     var maxPrice: Double,
@@ -54,5 +54,5 @@ data class ProductEntity(
     var minPrice: Double,
 
     @ColumnInfo(name = "image")
-    var image: String
+    var image: String?
 )

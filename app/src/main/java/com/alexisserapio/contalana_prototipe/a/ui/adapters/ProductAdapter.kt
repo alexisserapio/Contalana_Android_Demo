@@ -29,7 +29,7 @@ class ProductAdapter(
     //Funcion para actualizar el recycler view
     fun updateList(list: List<ProductEntity>){
         products.clear()
-        products.addAll(list)
+        products.addAll(list.reversed())
         notifyDataSetChanged()
     }
 
