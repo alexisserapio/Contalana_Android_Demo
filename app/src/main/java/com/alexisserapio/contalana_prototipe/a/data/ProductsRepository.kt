@@ -1,13 +1,11 @@
 package com.alexisserapio.contalana_prototipe.a.data
 
 import com.alexisserapio.contalana_prototipe.a.data.db.ProductDAO
-import com.alexisserapio.contalana_prototipe.a.data.db.model.ProductEntity
+import com.alexisserapio.contalana_prototipe.a.data.db.entities.ProductEntity
 
-
-class AppRepository(
+class ProductsRepository(
     private val productDAO: ProductDAO
 ) {
-
     suspend fun insertProduct(product: ProductEntity) {
         productDAO.insertProduct(product)
     }

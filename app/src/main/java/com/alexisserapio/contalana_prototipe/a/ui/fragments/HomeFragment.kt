@@ -13,15 +13,21 @@ import androidx.core.view.WindowInsetsControllerCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.alexisserapio.contalana_prototipe.R
+import com.alexisserapio.contalana_prototipe.a.application.ContalanaApp
 import com.alexisserapio.contalana_prototipe.a.data.DataStoreManager
+import com.alexisserapio.contalana_prototipe.a.data.ProductsRepository
 import com.alexisserapio.contalana_prototipe.databinding.FragmentHomeBinding
 import kotlinx.coroutines.launch
 import com.alexisserapio.contalana_prototipe.a.data.dataStore
+import com.alexisserapio.contalana_prototipe.a.data.db.entities.ProductEntity
 import kotlinx.coroutines.flow.first
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
+
+    private var products = mutableListOf<ProductEntity>()
+    private lateinit var productsRespository: ProductsRepository
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,6 +42,8 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        productsRespository =(requireContext().applicationContext as ContalanaApp).productsRepository
+
         lifecycleScope.launch {
             val preferences = requireContext().dataStore.data.first() // suspende hasta obtener el primer valor
             val userName = preferences[DataStoreManager.USER_NAME] ?: ""
@@ -44,6 +52,8 @@ class HomeFragment : Fragment() {
             binding.tvHomeTitle.text = getString(R.string.homeScene_welcome, userName)
             binding.tvBusinessName.text = businessName
         }
+
+        updateUI()
     }
 
     override fun onResume() {
@@ -55,5 +65,14 @@ class HomeFragment : Fragment() {
             .isAppearanceLightStatusBars = isLight
     }
 
+    private fun updateUI(){
+
+        lifecycleScope.launch {
+            products = productsRespository.getAllProducts()
+
+            binding.tvProductsCount.text = getString(R.string.homeScene_productsCount, products.count())
+
+        }
+    }
 
 }

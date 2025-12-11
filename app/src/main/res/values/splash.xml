@@ -3,6 +3,6 @@
     <style name="Theme.Contalana_Prototipe.MySplash" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">@color/backgroundColor</item>
         <item name="postSplashScreenTheme">@style/Theme.Contalana_Prototipe</item>
-        <item name="windowSplashScreenAnimatedIcon">@drawable/logo</item>
+        <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_launcher_foreground</item>
     </style>
 </resources>

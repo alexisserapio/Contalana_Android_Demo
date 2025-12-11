@@ -96,7 +96,13 @@
     <string name="homeScene.productsCount">Tienes %1$d existencias en tu Inventario</string>
 
     <!-- Inventory Screen -->
-    <string name="inventoryScene.welcome">Inventario de %1$s</string>
+    <string name="inventoryScene.title">Inventario de %1$s</string>
+    <string name="inventoryScene.noProducts">No hay productos en el inventario\n ¡Añade uno!</string>
+    <string name="inventoryScene.addProduct">Añadir Producto</string>
+
+    <!-- Product Item -->
+    <string name="product.label.id">Id del Producto: %1$d</string>
+    <string name="product.label.units">Unidades: %1$d</string>
 
     <!-- Managment Screen -->
     <string name="managementScene.welcome">Gestión de %1$s</string>
