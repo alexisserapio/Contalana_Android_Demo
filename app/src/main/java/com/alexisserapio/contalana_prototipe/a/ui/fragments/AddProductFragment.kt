@@ -38,7 +38,7 @@ class AddProductFragment : BottomSheetDialogFragment() {
         ) ?: return
 
         bottomSheet.layoutParams.height =
-            (resources.displayMetrics.heightPixels * 0.90).toInt()
+            (resources.displayMetrics.heightPixels * 0.95).toInt()
 
         val behavior = BottomSheetBehavior.from(bottomSheet)
 
