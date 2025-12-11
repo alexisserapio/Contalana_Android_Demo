@@ -20,8 +20,8 @@ data class ProductEntity(
     @ColumnInfo(name = "category")
     var category: String,
 
-    @ColumnInfo(name = "amount")
-    var amount: Int,
+    @ColumnInfo(name = "stock")
+    var stock: Int,
 
     @ColumnInfo(name = "price")
     var price: Double,

@@ -31,7 +31,7 @@ class ProductViewHolder(
             tvProductName.text = product.productName
             tvDescription.text = product.productDescription
             tvPrice.text = currencyFormatter.format(product.productDescription)
-            tvUnits.text = product.amount.toString()
+            tvUnits.text = product.stock.toString()
         }
     }
 

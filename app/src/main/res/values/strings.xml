@@ -100,9 +100,19 @@
     <string name="inventoryScene.noProducts">No hay productos en el inventario\n ¡Añade uno!</string>
     <string name="inventoryScene.addProduct">Añadir Producto</string>
 
-    <!-- Product Item -->
+    <!-- Add Product Screen & Items -->
     <string name="product.label.id">Id del Producto: %1$d</string>
     <string name="product.label.units">Unidades: %1$d</string>
+    <string name="product.label.add">Añadir Producto</string>
+    <string name="product.label.name">Nombre del Producto</string>
+    <string name="product.hint.name">Maceta de Arcilla Roja</string>
+    <string name="product.label.desc">Descripción del Producto</string>
+    <string name="product.hint.desc">Maceta de 20cm de Diámetro</string>
+    <string name="product.label.price">Precio (Con Centavos)</string>
+    <string name="product.hint.price">$49.99</string>
+    <string name="product.label.stock">Unidades</string>
+    <string name="product.hint.stock">5</string>
+    <string name="product.button">Agregar Producto</string>
 
     <!-- Managment Screen -->
     <string name="managementScene.welcome">Gestión de %1$s</string>
