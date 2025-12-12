@@ -20,4 +20,7 @@ class ProductsRepository(
         productDAO.deleteProduct(product)
     }
 
+    fun getAllProductsFlow() = productDAO.getAllProductsFlow()
+
+
 }

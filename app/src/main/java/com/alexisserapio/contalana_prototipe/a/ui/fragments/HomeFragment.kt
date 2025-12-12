@@ -42,8 +42,6 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        productsRespository =(requireContext().applicationContext as ContalanaApp).productsRepository
-
         lifecycleScope.launch {
             val preferences = requireContext().dataStore.data.first() // suspende hasta obtener el primer valor
             val userName = preferences[DataStoreManager.USER_NAME] ?: ""
@@ -53,7 +51,14 @@ class HomeFragment : Fragment() {
             binding.tvBusinessName.text = businessName
         }
 
-        updateUI()
+        binding.createOrderButton.setOnClickListener {
+            val fragmentCreateOrder = CreateOrderFragment()
+            //val fragmentAddProduct = AddProductFragment.newInstance()
+
+            fragmentCreateOrder.show(childFragmentManager, "createOrderFragment")
+
+        }
+
     }
 
     override fun onResume() {
@@ -65,14 +70,14 @@ class HomeFragment : Fragment() {
             .isAppearanceLightStatusBars = isLight
     }
 
-    private fun updateUI(){
-
+    private fun observeProducts() {
         lifecycleScope.launch {
-            products = productsRespository.getAllProducts()
+            productsRespository.getAllProductsFlow().collect { list ->
+                products = list.toMutableList()
 
-            binding.tvProductsCount.text = getString(R.string.homeScene_productsCount, products.count())
-
+            }
         }
     }
+
 
 }

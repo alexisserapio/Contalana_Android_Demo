@@ -68,7 +68,7 @@ class InventoryFragment : Fragment() {
         }
 
         productAdapter = ProductAdapter{ selectedProduct ->
-
+            //Aqui va el clic al producto
         }
 
         binding.rvInventory.apply {

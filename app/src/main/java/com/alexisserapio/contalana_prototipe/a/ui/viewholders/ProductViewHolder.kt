@@ -1,8 +1,12 @@
 package com.alexisserapio.contalana_prototipe.a.ui.viewholders
 
+
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat.getString
 import androidx.recyclerview.widget.RecyclerView
+import com.alexisserapio.contalana_prototipe.R
 import com.alexisserapio.contalana_prototipe.a.data.db.entities.ProductEntity
 import com.alexisserapio.contalana_prototipe.databinding.ProductElementBinding
 import java.text.NumberFormat
@@ -14,6 +18,8 @@ class ProductViewHolder(
 
     private var currentItem: ProductEntity? = null
     private val currencyFormatter = NumberFormat.getCurrencyInstance()
+
+    private val context: Context = itemView.context
 
     init {
         //Click a los elementos del viewholder
@@ -27,11 +33,11 @@ class ProductViewHolder(
         //Aqui vinculamos las vistas
 
         binding.apply {
-            tvProductId.text = product.id.toString()
+            tvProductId.text = context.getString(R.string.product_label_id, product.id.toInt())
             tvProductName.text = product.productName
             tvDescription.text = product.productDescription
-            tvPrice.text = currencyFormatter.format(product.price)
-            tvUnits.text = product.stock.toString()
+            tvPrice.text = currencyFormatter.format(product.price).trim()
+            tvUnits.text = context.getString(R.string.product_label_units, product.stock)
         }
     }
 

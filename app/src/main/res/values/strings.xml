@@ -92,8 +92,18 @@
 
     <!-- Home Screen -->
     <string name="homeScene.welcome">Bienvenido, %1$s</string>
-    <string name="homeScene.subtitle">Tu negocio hasta hoy:</string>
-    <string name="homeScene.productsCount">Tienes %1$d existencias en tu Inventario</string>
+    <string name="homeScene.resume">Resumen financiero de hoy:</string>
+    <string name="homeScene.pendant">Tus pendientes:</string>
+    <string name="homeScene.createOrder">Crear Pedido</string>
+    <string name="homeScene.createOrder.subtitle">Selecciona un producto:</string>
+    <string name="homeScene.noMovements">¡Tu día aún está en blanco!\n\nEl resumen aparecerá aquí tan pronto como algo suceda :)</string>
+    <string name="homeScene.noPendants">No tienes ningún pendiente para el negocio\n ¡Genial!</string>
+
+    <!-- Create Order -->
+    <string name="createOrder.noProducts">No hay productos en el inventario\n ¡Añade uno desde la pestaña Inventario!</string>
+    <string name="createOrder.order.label">Tu Pedido:</string>
+    <string name="createOrder.order.amount">Cantidad</string>
+
 
     <!-- Inventory Screen -->
     <string name="inventoryScene.title">Inventario de %1$s</string>
@@ -117,7 +127,9 @@
     <string name="product.error">Ups, hubo un error al crear el producto.\nIntentalo Nuevamente</string>
 
     <!-- Managment Screen -->
-    <string name="managementScene.welcome">Gestión de %1$s</string>
+    <string name="managementScene.title">%1$s, está listo.</string>
+    <string name="managementScene.subtitle">¿Qué vamos a hacer hoy?</string>
+    <string name="managementScene.productsCount">Actualmente tienes %1$d existencias en tu inventario.</string>
 
     <!-- Planning Scene -->
     <string name="planningScene.welcome">Planeación de %1$s</string>

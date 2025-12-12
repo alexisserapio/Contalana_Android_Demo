@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:backgroundTint="@color/backgroundColor"
+    android:background="@drawable/modal_design">
+
+    <ImageView
+        android:id="@+id/backButton"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
+        android:src="@drawable/ic_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="35dp"/>
+
+    <TextView
+        android:id="@+id/tvCreateOrderTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="20dp"
+        android:text="@string/homeScene.createOrder"
+        android:textColor="@color/textColor"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/backButton"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvCreateOrderSubtitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tvCreateOrderTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:text="@string/homeScene.createOrder.subtitle"
+        android:textSize="18sp"
+        android:textStyle="normal"
+        android:textColor="@color/textColor"/>
+
+    <TextView
+        android:id="@+id/tvNoProducts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/createOrder.noProducts"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="@color/textColor"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:visibility="invisible"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/createOrderRV"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/tvCreateOrderSubtitle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="30dp"/>
+
+    <!-- NUEVO: CONTENEDOR PARA REEMPLAZAR FRAGMENTS -->
+    <FrameLayout
+        android:id="@+id/fragmentContainer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/tvCreateOrderSubtitle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="30dp"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

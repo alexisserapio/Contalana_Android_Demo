@@ -20,9 +20,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import java.io.IOException
-import java.text.NumberFormat
-import java.util.Locale
-import kotlin.math.max
+
 
 class AddProductFragment(
     private var product: ProductEntity = ProductEntity(
@@ -47,7 +45,6 @@ class AddProductFragment(
 ) : BottomSheetDialogFragment() {
     private var _binding: FragmentAddProductBinding? = null
     private val binding get() = _binding!!
-    private val currencyFormatter = NumberFormat.getCurrencyInstance(Locale.getDefault())
     private lateinit var productsRepository: ProductsRepository
     private val maxLength = 26
     private val minLength = 5

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".a.ui.fragments.OrderFragment">
+
+    <TextView
+        android:id="@+id/tvOrder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="@color/textColor"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="30dp"
+        android:text="@string/createOrder.order.label"
+        android:textSize="18dp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/tvProductName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tvOrder"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="@color/textColor"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="30dp"
+        android:hint="Macetota"
+        android:textSize="20dp"
+        android:textStyle="normal"/>
+
+    <TextView
+        android:id="@+id/tvProductDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tvProductName"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="@color/textColor"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="30dp"
+        android:hint="Descripción"
+        android:textSize="16dp"
+        android:textStyle="italic"/>
+
+    <TextView
+        android:id="@+id/tvAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tvOrder"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tvProductName"
+        android:layout_marginEnd="75dp"
+        android:textColor="@color/darkestGray"
+        android:layout_marginStart="30dp"
+        android:text="@string/createOrder.order.amount"
+        android:textSize="16dp"
+        android:textStyle="bold"/>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
