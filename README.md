@@ -36,6 +36,7 @@ Con el demo de la app el usuario puede:
 ## 💻 Tech Stack 
 - Se desarrolló utilizando **Android Studio** y el lenguaje nativo **Kotlin**.
 - Arquitectura siguiendo los patrones de diseño **MVVM** y **Singleton**.
+- Se hace uso de Repositorios para acceder correctamente a las instancias Singleton de edición de la base de datos..
 - **DataStore Preferences** para almacenamiento de valores *bool* como bandera para identificar eventos ya ejecutados.
 - Aplicación de la base de datos utilizando **SQLite** mediante **Room**.
 - Uso de **Google Analytics** mediante **Firebase** de Google.
@@ -45,6 +46,9 @@ Con el demo de la app el usuario puede:
 - Proyecto configurado con **Gradle Kotlin DSL**  
 - Compatibilidad con **API nivel 24 (Android 7.0)** o superior.
 - En el proceso de desarrollo se implemento control de versionamiento utilizando **Git** y manejo de repositorios en **Github**.
+ ### Adciones del Módulo 9
+ - Se añade Inicio de Sesión con Firebase Auth con el método personal de email, constraseña y con Cuenta Google
+ - Se añade lifeCycleScope haciendo uso de diferentes hilos como Main y IO.
 
 ## ⚙️ Requisitos  
 - **Android Studio** (versión Arctic Fox o superior)  
