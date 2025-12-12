@@ -8,24 +8,38 @@ import android.text.TextWatcher
 import android.util.Log
 import android.util.Patterns
 import android.view.View
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.credentials.CredentialManager
+import androidx.credentials.CustomCredential
+import androidx.credentials.GetCredentialRequest
+import androidx.credentials.GetCredentialResponse
 import androidx.datastore.preferences.core.edit
 import androidx.lifecycle.lifecycleScope
 import com.alexisserapio.contalana_prototipe.R
 import com.alexisserapio.contalana_prototipe.a.data.DataStoreManager
 import com.alexisserapio.contalana_prototipe.a.data.dataStore
+import com.alexisserapio.contalana_prototipe.a.utils.NonceUtils
 import com.alexisserapio.contalana_prototipe.databinding.ActivitySigninBinding
 import com.google.android.gms.tasks.Task
+import com.google.android.libraries.identity.googleid.GetGoogleIdOption
+import com.google.android.libraries.identity.googleid.GetSignInWithGoogleOption
 import com.google.android.material.snackbar.Snackbar
+import com.alexisserapio.contalana_prototipe.BuildConfig
+import com.google.android.libraries.identity.googleid.GoogleIdTokenCredential
+import com.google.android.libraries.identity.googleid.GoogleIdTokenParsingException
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.GoogleAuthProvider
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.lang.Exception
 import kotlin.math.sign
 import kotlin.toString
 
@@ -33,6 +47,13 @@ class SigninActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySigninBinding
 
+    //Mostrar cuentas con un BottomSheet (flujo acceder con Google)
+    private lateinit var googleIdOption: GetGoogleIdOption
+    //Ingresar con el flujo de un botón
+    private lateinit var signInWithGoogleOption: GetSignInWithGoogleOption
+    //Para el Credential manager
+    private lateinit var credentialManager: CredentialManager
+    //Para la autenticación con Firebase
     private lateinit var firebaseAuth: FirebaseAuth
 
     private var userName = ""
@@ -67,6 +88,56 @@ class SigninActivity : AppCompatActivity() {
         }
 
         firebaseAuth = FirebaseAuth.getInstance()
+
+        //Instanciamos el credential manager
+        credentialManager = CredentialManager.create(this)
+
+        //Generamos un nonce de 32 caracteres
+        val nonce = NonceUtils.generateNonce(32)
+
+        //Para mostrar las cuentas con un BottomSheet
+        googleIdOption = GetGoogleIdOption.Builder()
+            .setFilterByAuthorizedAccounts(false)
+            //.setServerClientId()
+            .setServerClientId(BuildConfig.WEB_CLIENT_ID)
+            .setAutoSelectEnabled(false)
+            .setNonce(nonce)
+            .build()
+
+        //Para el flujo de un botón
+        signInWithGoogleOption = GetSignInWithGoogleOption.Builder(BuildConfig.WEB_CLIENT_ID)
+            .setNonce(nonce)
+            .build()
+
+        binding.btnSignInGoogle.setOnClickListener {
+            val request: GetCredentialRequest = GetCredentialRequest.Builder()
+                //.addCredentialOption(googleIdOption)  //BottomSheet
+                .addCredentialOption(signInWithGoogleOption) //Flujo de un botón
+                .build()
+
+            lifecycleScope.launch {
+                try{
+                    val result = credentialManager.getCredential(
+                        this@SigninActivity,
+                        request
+                    )
+                    handleSignIn(result)
+
+                }catch (e: Exception){
+                    //Manejamos el error
+                    if(e.message.equals("No credentials available")){
+                        AlertDialog.Builder(this@SigninActivity)
+                            .setTitle(getString(R.string.signIn_register_error))
+                            .setMessage(getString(R.string.signIn_register_message))
+                            .setNeutralButton(getString(R.string.signIn_register_accept)){ dialog, _ ->
+                                dialog.dismiss()
+                            }
+                            .create()
+                            .show()
+                    }
+                }
+            }
+        }
 
         if(firebaseAuth.currentUser != null)
             actionLoginSuccessful()
@@ -393,6 +464,45 @@ class SigninActivity : AppCompatActivity() {
                 editText.requestFocus()
             }
             return
+        }
+    }
+
+    private fun handleSignIn(result: GetCredentialResponse){
+        //Manejamos la credencial obtenida
+        when(val credential = result.credential){
+            is CustomCredential ->{
+                //Verificamos si el resultado es un token de una credencial Google
+                if(credential.type == GoogleIdTokenCredential.TYPE_GOOGLE_ID_TOKEN_CREDENTIAL){
+                    try{
+                        //Usamos el googleIdTokenCredential y lo extraemos para autenticarnos en firebase
+
+                        //Obtenemos el token de Google
+                        val googleIdTokenCredential = GoogleIdTokenCredential
+                            .createFrom(credential.data)
+
+                        //Usamos el token para obtener la credencial de autenticación
+                        val authCredential =
+                            GoogleAuthProvider.getCredential(googleIdTokenCredential.idToken, null)
+
+                        firebaseAuth.signInWithCredential(authCredential)
+                            .addOnSuccessListener {
+                                actionLoginSuccessful()
+                            }.addOnFailureListener {
+                                createSnackbar(getString(R.string.signIn_register_problem), true)
+                            }
+
+                    }catch(e: GoogleIdTokenParsingException){
+                        Log.e("APPLOGS", "Respuesta de token de Google inválida", e)
+                    }
+                }else{
+                    //Capturamos el error de una credencial no reconocida
+                    Log.e("APPLOGS", "Credencial no reconocida")
+                }
+            }
+            else -> {
+                //Capturamos el error de una credencial no reconocida
+                Log.e("APPLOGS", "Credencial no reconocida")
+            }
         }
     }
 

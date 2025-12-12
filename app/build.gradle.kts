@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -17,6 +19,19 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        //Leemos el archivo local.properties
+        val localProperties = Properties()
+        val localPropertiesFile = rootProject.file("local.properties")
+        if(localPropertiesFile.exists()){
+            localProperties.load(localPropertiesFile.inputStream())
+        }
+
+        //Leemos la propiedad
+        val webClientId = localProperties.getProperty("WEB_CLIENT_ID")
+
+        //Creamos el campo BuildConfig
+        buildConfigField("String", "WEB_CLIENT_ID", "\"$webClientId\"")
     }
 
     buildTypes {
@@ -37,6 +52,7 @@ android {
     }
     buildFeatures{
         viewBinding = true
+        buildConfig = true
     }
 
 
@@ -66,8 +82,12 @@ dependencies {
     implementation(libs.androidx.core.splashscreen)
     //Room
     implementation(libs.androidx.room.ktx)
-
+    //Firebase Auth
     implementation(libs.firebase.auth)
+    //Bibliotecas para Credential Manager
+    implementation("androidx.credentials:credentials:1.5.0")
+    implementation("androidx.credentials:credentials-play-services-auth:1.5.0")
+    implementation("com.google.android.libraries.identity.googleid:googleid:1.1.1")
 
     ksp(libs.androidx.room.compiler)
 

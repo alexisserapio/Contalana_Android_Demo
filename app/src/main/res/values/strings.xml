@@ -52,6 +52,11 @@
     <string name="signIn.error.noAccount">No existe el usuario con la información proporcionada, intentalo de nuevo</string>
     <string name="signIn.error.noConnection">Red no disponible, comprueba tu conexión a Internet y vuelve a intentarlo</string>
     <string name="signIn.error.generalError">Ups, ocurrió un error.\n Intentalo nuevamente en unos minutos</string>
+    <string name="signIn.register.othersLabel">O registrate con</string>
+    <string name="signIn.register.error">Error</string>
+    <string name="signIn.register.message">No hay cuentas asociadas. Asocie una cuenta Google primero en la configuración general del dispositivo</string>
+    <string name="signIn.register.accept">Aceptar</string>
+    <string name="signIn.register.problem">Hubo un problema al completar la autenticación con Google</string>
 
     <!-- LogIn Activity -->
     <string name="logIn.title">¡Bienvenido de vuelta!</string>
