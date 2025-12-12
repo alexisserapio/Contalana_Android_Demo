@@ -72,6 +72,7 @@ class HomeFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
+        observe()
         val color = (requireView().background as ColorDrawable).color
         val isLight = ColorUtils.calculateLuminance(color) > 0.5
 

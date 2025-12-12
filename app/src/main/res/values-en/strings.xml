@@ -104,6 +104,7 @@
     <string name="homeScene.createOrder.subtitle">Select a product:</string>
     <string name="homeScene.noMovements">Your day is still blank!\nThe summary will appear here as soon as something happens :)</string>
     <string name="homeScene.noPendants">You have no pending tasks for the business\n Great!</string>
+    <string name="homeScene.totalGains">%1$s earnings today. ¡Well Done!</string>
 
     <!-- Create Order -->
     <string name="createOrder.noProducts">There are no products in the inventory\nAdd one from the Inventory tab!</string>

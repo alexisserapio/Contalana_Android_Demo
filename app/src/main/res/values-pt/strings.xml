@@ -104,6 +104,7 @@
     <string name="homeScene.createOrder.subtitle">Selecione um produto:</string>
     <string name="homeScene.noMovements">Seu dia ainda está em branco!\nO resumo aparecerá aqui assim que algo acontecer :)</string>
     <string name="homeScene.noPendants">Você não tem tarefas pendentes\nÓtimo!</string>
+    <string name="homeScene.totalGains">%1$s em Ganhos Hoje. Muito Bem!</string>
 
     <!-- Create Order -->
     <string name="createOrder.noProducts">Não há produtos no inventário\nAdicione um na aba Inventário!</string>
