@@ -1,0 +1,150 @@
+<resources>
+    <!-- Welcome Activity -->
+    <string name="app_name">Contalana</string>
+    <string name="welcome.title">Bem-vindo ao Contalana</string>
+    <string name="welcome.sublabel">Vamos alcançar juntos todas as metas e objetivos do seu negócio!</string>
+    <string name="welcome.button">Vamos lá</string>
+    <string name="welcome.terms">Ao continuar, você aceita os Termos e Condições e a Política de Privacidade da Contalana.</string>
+    <string name="welcome.signin">Já tem uma conta? Entrar</string>
+    <string name="welcome.terms.label">Termos e Condições da Contalana</string>
+    <string name="welcome.terms.policy">Política de Privacidade</string>
+    <string name="welcome.signin.label">Entrar</string>
+
+    <!-- Informative Activity -->
+    <string name="informative.button">Continuar</string>
+    <string name="infoPoster.title.one">A Contalana ajuda na gestão do meu negócio</string>
+    <string name="infoPoster.description.one">Com a Contalana, você controla os produtos do seu negócio de forma rápida e intuitiva</string>
+    <string name="infoPoster.title.two">A Contalana torna a gestão financeira simples</string>
+    <string name="infoPoster.description.two">Acompanhe facilmente os lucros e despesas do seu negócio, além de obter projeções futuras — tudo em um só lugar</string>
+    <string name="infoPoster.title.three">A Contalana apoia o crescimento do meu negócio</string>
+    <string name="infoPoster.description.three">Vamos trabalhar juntos para alcançar o máximo potencial do seu negócio!</string>
+    <string name="infoPoster.button">Continuar</string>
+
+    <!-- BName Activity -->
+    <string name="bName.title">Pronto para levar a gestão do seu negócio a outro nível?</string>
+    <string name="bName.subtitle">Com qual nome você gostaria que nos referíssemos ao seu negócio?</string>
+    <string name="bName.button">Gosto deste</string>
+    <string name="bName.forms.bname">Mercearia "A Esquininha"</string>
+    <string name="bName.alert.title">Insira um nome válido</string>
+    <string name="bName.alert.empty">O nome do seu negócio está vazio</string>
+    <string name="bName.alert.notValid">Use entre 5 e 32 caracteres, incluindo letras, números e os símbolos: . _ $ &amp; /</string>
+    <string name="bName.alert.button">Aceitar</string>
+
+    <!-- SignIn Activity -->
+    <string name="signin.title">Bem-vindo,</string>
+    <string name="signin.subtitle">Cadastre-se para gerenciar todo o seu negócio com um só toque.</string>
+    <string name="signin.username.label">Nome de Usuário</string>
+    <string name="signin.username.hint">João Silva</string>
+    <string name="signin.mail.label">E-mail</string>
+    <string name="signin.mail.hint">exemplo@mail.com</string>
+    <string name="signin.password.hint">Digite pelo menos 8 caracteres</string>
+    <string name="signin.password.label">Senha</string>
+    <string name="signIn.button">Cadastrar</string>
+    <string name="signIn.confirmationMail.successful">Cadastro realizado com sucesso!\nUm e-mail de verificação foi enviado para o endereço informado</string>
+    <string name="signIn.confirmationMail.error">Ops, ocorreu um erro ao enviar o e-mail de verificação. Tente novamente</string>
+    <string name="signIn.register.successful">%1$s, seu cadastro foi realizado com sucesso.</string>
+    <string name="signIn.error.requiredLength">O campo deve conter pelo menos 8 caracteres</string>
+    <string name="signIn.error.maxLength">O campo não pode exceder 26 caracteres</string>
+    <string name="signIn.error.notValid">Certifique-se de que o campo atende ao formato solicitado</string>
+    <string name="signIn.error.pswOrMailNotValid">Ops, a senha ou o e-mail inserido não é válido. Tente novamente</string>
+    <string name="signIn.error.accountWithOtherProvider">Já existe uma conta com este e-mail, mas com outro provedor</string>
+    <string name="signIn.error.accountAlreadyExists">Este e-mail já está sendo usado por outra conta</string>
+    <string name="signIn.error.sessionExpired">A sessão expirou. Faça login novamente para continuar</string>
+    <string name="signIn.error.noAccount">Não existe usuário com as informações fornecidas. Tente novamente</string>
+    <string name="signIn.error.noConnection">Rede indisponível. Verifique sua conexão com a Internet e tente novamente</string>
+    <string name="signIn.error.generalError">Ops, ocorreu um erro.\nTente novamente em alguns minutos</string>
+    <string name="signIn.register.othersLabel">Ou cadastre-se com</string>
+    <string name="signIn.register.error">Erro</string>
+    <string name="signIn.register.message">Nenhuma conta associada. Associe uma conta Google primeiro nas configurações gerais do dispositivo</string>
+    <string name="signIn.register.accept">Aceitar</string>
+    <string name="signIn.register.problem">Ocorreu um problema ao concluir a autenticação com o Google</string>
+
+    <!-- LogIn Activity -->
+    <string name="logIn.title">Bem-vindo de volta!</string>
+    <string name="logIn.subtitle">Faça login para continuar gerenciando seu negócio de onde estiver.</string>
+    <string name="logIn.mail.label">E-mail</string>
+    <string name="logIn.mail.hint">exemplo@mail.com</string>
+    <string name="logIn.password.label">Senha</string>
+    <string name="logIn.password.hint">Digite pelo menos 8 caracteres</string>
+    <string name="logIn.button">Entrar</string>
+    <string name="logIn.forgottenPassword">Esqueceu sua senha?</string>
+    <string name="logIn.alert.title">Redefinir Senha</string>
+    <string name="logIn.alert.message">Digite seu e-mail para receber um link de redefinição de senha</string>
+    <string name="logIn.alert.done">Enviar</string>
+    <string name="logIn.alert.doneMessage">O link de redefinição foi enviado</string>
+    <string name="logIn.alert.failMessage">Não foi possível enviar o link de redefinição. Tente novamente</string>
+    <string name="logIn.alert.invalidMail">Ops, o e-mail inserido não é válido</string>
+    <string name="logIn.alert.cancel">Cancelar</string>
+    <string name="logIn.success">Bem-vindo, %1$s!</string>
+    <string name="logIn.error.pswOrMailNotValid">Ops, a senha ou o e-mail inserido não é válido. Tente novamente</string>
+    <string name="logIn.error.accountWithOtherProvider">Já existe uma conta com este e-mail, mas com outro provedor</string>
+    <string name="logIn.error.sessionExpired">A sessão expirou. Faça login novamente para continuar</string>
+    <string name="logIn.error.noAccount">Não existe usuário com as informações fornecidas. Tente novamente</string>
+    <string name="logIn.error.noConnection">Rede indisponível. Verifique sua conexão com a Internet e tente novamente</string>
+    <string name="logIn.error.generalError">Ops, ocorreu um erro.\nTente novamente em alguns minutos</string>
+
+    <!-- Form Activity -->
+    <string name="form.title">É aqui que começa o melhor para %1$s!</string>
+    <string name="form.subtitle">Permita-nos coletar algumas informações sobre você.</string>
+    <string name="form.label.title">Você usa redes sociais?</string>
+    <string name="form.label.subtitle">Isso nos ajuda a melhorar as estimativas que podemos oferecer gratuitamente no app</string>
+    <string name="form.button">Começar a gerenciar meu negócio!</string>
+
+    <!-- Tab Bar Activity -->
+    <string name="item.one">Início</string>
+    <string name="item.two">Inventário</string>
+    <string name="item.three">Gestão</string>
+    <string name="item.four">Planejamento</string>
+
+    <!-- Home Screen -->
+    <string name="homeScene.welcome">Bem-vindo, %1$s</string>
+    <string name="homeScene.resume">Resumo financeiro de hoje:</string>
+    <string name="homeScene.pendant">Suas tarefas pendentes:</string>
+    <string name="homeScene.createOrder">Registrar uma Venda</string>
+    <string name="homeScene.createOrder.subtitle">Selecione um produto:</string>
+    <string name="homeScene.noMovements">Seu dia ainda está em branco!\nO resumo aparecerá aqui assim que algo acontecer :)</string>
+    <string name="homeScene.noPendants">Você não tem tarefas pendentes\nÓtimo!</string>
+
+    <!-- Create Order -->
+    <string name="createOrder.noProducts">Não há produtos no inventário\nAdicione um na aba Inventário!</string>
+    <string name="createOrder.order.label">Sua Venda:</string>
+    <string name="createOrder.order.amount">Quantidade</string>
+    <string name="createOrder.order.amountLimit">Você não pode adicionar mais itens do que os disponíveis no estoque</string>
+    <string name="createOrder.order.total">Total:</string>
+    <string name="createOrder.order.save">Registrar Venda</string>
+    <string name="createOrder.order.createdSuccessful">Venda registrada com sucesso</string>
+    <string name="createOrder.order.createdError">Ocorreu um erro ao registrar a venda. Tente novamente</string>
+
+    <!-- Inventory Screen -->
+    <string name="inventoryScene.title">Inventário de %1$s</string>
+    <string name="inventoryScene.noProducts">Não há produtos no inventário\nAdicione um!</string>
+    <string name="inventoryScene.addProduct">Adicionar Produto</string>
+
+    <!-- Add Product Screen & Items -->
+    <string name="product.label.id">ID do Produto: %1$d</string>
+    <string name="product.label.units">Unidades: %1$d</string>
+    <string name="product.label.add">Adicionar Produto</string>
+    <string name="product.label.name">Nome do Produto</string>
+    <string name="product.hint.name">Vaso de Barro Vermelho</string>
+    <string name="product.label.desc">Descrição do Produto</string>
+    <string name="product.hint.desc">Vaso de 20 cm de diâmetro</string>
+    <string name="product.label.price">Preço (Com Centavos)</string>
+    <string name="product.hint.price">R$49,99</string>
+    <string name="product.label.stock">Unidades</string>
+    <string name="product.hint.stock">5</string>
+    <string name="product.button">Adicionar Produto</string>
+    <string name="product.success">Produto adicionado com sucesso!</string>
+    <string name="product.error">Ops, ocorreu um erro ao criar o produto.\nTente novamente</string>
+
+    <!-- Management Screen -->
+    <string name="managementScene.title">%1$s, tudo pronto.</string>
+    <string name="managementScene.subtitle">O que vamos fazer hoje?</string>
+    <string name="managementScene.productsCount">Você tem atualmente %1$d itens no seu inventário.</string>
+
+    <!-- Planning Scene -->
+    <string name="planningScene.title">Planejamento de %1$s</string>
+
+    <!-- Utils -->
+    <string name="hello_blank_fragment">Testando Fragment!!</string>
+
+</resources>

@@ -1,41 +1,94 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Welcome Activity -->
     <string name="app_name">Contalana</string>
     <string name="welcome.title">Welcome to Contalana</string>
-    <string name="welcome.sublabel">Let\'s achieve all the goals and objectives for your business together</string>
-    <string name="welcome.button">Let\'s do it</string>
-    <string name="welcome.terms">By continuing, you agree to Contalana\'s Terms and Conditions and Privacy Policy.</string>
-    <string name="welcome.signin">Already have an account?  Sign In</string>
-    <string name="welcome.terms.label">Contalana\'s Terms and Conditions</string>
+    <string name="welcome.sublabel">Let\'s achieve all your business goals and objectives together!</string>
+    <string name="welcome.button">Let’s do it</string>
+    <string name="welcome.terms">By continuing, you accept Contalana’s Terms and Conditions and Privacy Policy.</string>
+    <string name="welcome.signin">Already have an account? Sign In</string>
+    <string name="welcome.terms.label">Contalana Terms and Conditions</string>
     <string name="welcome.terms.policy">Privacy Policy</string>
     <string name="welcome.signin.label">Sign In</string>
 
     <!-- Informative Activity -->
     <string name="informative.button">Continue</string>
-    <string name="infoPoster.title.one">Contalana helps with managing my business</string>
-    <string name="infoPoster.description.one">With Contalana, keep a better track of your business\'s products in a fast and intuitive way</string>
+    <string name="infoPoster.title.one">Contalana helps you manage your business</string>
+    <string name="infoPoster.description.one">With Contalana, you can keep better control of your products quickly and intuitively</string>
     <string name="infoPoster.title.two">Contalana makes financial management simple</string>
-    <string name="infoPoster.description.two">Easily monitor your business\'s profits and expenses. Plus, get future projections, all in one place</string>
-    <string name="infoPoster.title.three">Contalana supports my business\'s growth</string>
-    <string name="infoPoster.description.three">Let\'s work together to unlock your business\'s full potential!</string>
+    <string name="infoPoster.description.two">Easily track your business’s earnings and expenses. Plus, get future projections—all in one place</string>
+    <string name="infoPoster.title.three">Contalana supports the growth of your business</string>
+    <string name="infoPoster.description.three">Let’s work together to unlock your business’s full potential!</string>
     <string name="infoPoster.button">Continue</string>
+
     <!-- BName Activity -->
     <string name="bName.title">Are you ready to take your business management to the next level?</string>
-    <string name="bName.subtitle">What name would you like us to use to refer to your business?</string>
+    <string name="bName.subtitle">What name would you like us to use when referring to your business?</string>
     <string name="bName.button">I like this one</string>
-    <string name="bName.forms.bname">\"EZ Store\"</string>
-    <string name="bName.alert.title">Enter a name for your business</string>
-    <string name="bName.alert.empty">The business name is empty</string>
-    <string name="bName.alert.notValid">Use between 5 and 32 characters, including letters, numbers, and the symbols: . _ $ &amp; /</string>
-    <string name="bName.alert.button">OK</string>
+    <string name="bName.forms.bname">“La Esquinita” Grocery Store</string>
+    <string name="bName.alert.title">Enter a valid name</string>
+    <string name="bName.alert.empty">Your business name is empty</string>
+    <string name="bName.alert.notValid">Use between 5 and 32 characters, including letters, numbers, and symbols: . _ $ &amp; /</string>
+    <string name="bName.alert.button">Accept</string>
 
     <!-- SignIn Activity -->
     <string name="signin.title">Welcome,</string>
+    <string name="signin.subtitle">Sign up to manage your entire business with just a tap.</string>
+    <string name="signin.username.label">Username</string>
+    <string name="signin.username.hint">John Doe</string>
+    <string name="signin.mail.label">Email Address</string>
+    <string name="signin.mail.hint">example@mail.com</string>
+    <string name="signin.password.hint">Enter at least 8 characters</string>
+    <string name="signin.password.label">Password</string>
+    <string name="signIn.button">Sign Up</string>
+    <string name="signIn.confirmationMail.successful">Successful Registration!\nA verification email has been sent to the provided address</string>
+    <string name="signIn.confirmationMail.error">Oops, there was an error sending the verification email. Please try again</string>
+    <string name="signIn.register.successful">%1$s, your registration was successful.</string>
+    <string name="signIn.error.requiredLength">This field must contain at least 8 characters</string>
+    <string name="signIn.error.maxLength">This field cannot contain more than 26 characters</string>
+    <string name="signIn.error.notValid">Please make sure the field meets the required format</string>
+    <string name="signIn.error.pswOrMailNotValid">Oops, the password or email entered is not valid. Try again</string>
+    <string name="signIn.error.accountWithOtherProvider">An account already exists with this email, but with a different provider</string>
+    <string name="signIn.error.accountAlreadyExists">This email address is already in use by another account</string>
+    <string name="signIn.error.sessionExpired">Session expired. Please sign in again to continue</string>
+    <string name="signIn.error.noAccount">No user exists with the provided information. Try again</string>
+    <string name="signIn.error.noConnection">Network unavailable. Check your Internet connection and try again</string>
+    <string name="signIn.error.generalError">Oops, an error occurred.\nPlease try again in a few minutes</string>
+    <string name="signIn.register.othersLabel">Or sign up with</string>
+    <string name="signIn.register.error">Error</string>
+    <string name="signIn.register.message">No associated accounts. First associate a Google account in your device\'s general settings</string>
+    <string name="signIn.register.accept">Accept</string>
+    <string name="signIn.register.problem">There was a problem completing Google authentication</string>
+
+    <!-- LogIn Activity -->
+    <string name="logIn.title">Welcome back!</string>
+    <string name="logIn.subtitle">Sign in to continue managing your business wherever you are.</string>
+    <string name="logIn.mail.label">Email Address</string>
+    <string name="logIn.mail.hint">example@mail.com</string>
+    <string name="logIn.password.label">Password</string>
+    <string name="logIn.password.hint">Enter at least 8 characters</string>
+    <string name="logIn.button">Sign In</string>
+    <string name="logIn.forgottenPassword">Forgot your password?</string>
+    <string name="logIn.alert.title">Reset Password</string>
+    <string name="logIn.alert.message">Enter your email to receive a password reset link</string>
+    <string name="logIn.alert.done">Send</string>
+    <string name="logIn.alert.doneMessage">The reset link has been sent</string>
+    <string name="logIn.alert.failMessage">The reset link could not be sent. Please try again</string>
+    <string name="logIn.alert.invalidMail">Oops, the email entered is not valid</string>
+    <string name="logIn.alert.cancel">Cancel</string>
+    <string name="logIn.success">Welcome %1$s!</string>
+    <string name="logIn.error.pswOrMailNotValid">Oops, the password or email entered is not valid. Try again</string>
+    <string name="logIn.error.accountWithOtherProvider">An account already exists with this email but with a different provider</string>
+    <string name="logIn.error.sessionExpired">Session expired. Please sign in again to continue</string>
+    <string name="logIn.error.noAccount">No user exists with the provided information. Try again</string>
+    <string name="logIn.error.noConnection">Network unavailable. Check your Internet connection and try again</string>
+    <string name="logIn.error.generalError">Oops, an error occurred.\nPlease try again in a few minutes</string>
 
     <!-- Form Activity -->
-    <string name="formString">We are ready to start a new age in %1$s!</string>
-    <string name="buildingString">Here goes a form about some information about the business, work in progess!!</string>
-    <string name="formButton">Continue</string>
+    <string name="form.title">This is where the best starts for %1$s!</string>
+    <string name="form.subtitle">Allow us to gather some information about you.</string>
+    <string name="form.label.title">Do you use Social Media?</string>
+    <string name="form.label.subtitle">This helps us improve the free estimations we can offer you in the app</string>
+    <string name="form.button">Start managing my business!</string>
 
     <!-- Tab Bar Activity -->
     <string name="item.one">Home</string>
@@ -44,16 +97,52 @@
     <string name="item.four">Planning</string>
 
     <!-- Home Screen -->
-    <string name="homeScene.welcome">Welcome %1$s</string>
+    <string name="homeScene.welcome">Welcome, %1$s</string>
+    <string name="homeScene.resume">Today’s financial summary:</string>
+    <string name="homeScene.pendant">Your pending tasks:</string>
+    <string name="homeScene.createOrder">Register a Sale</string>
+    <string name="homeScene.createOrder.subtitle">Select a product:</string>
+    <string name="homeScene.noMovements">Your day is still blank!\nThe summary will appear here as soon as something happens :)</string>
+    <string name="homeScene.noPendants">You have no pending tasks for the business\n Great!</string>
+
+    <!-- Create Order -->
+    <string name="createOrder.noProducts">There are no products in the inventory\nAdd one from the Inventory tab!</string>
+    <string name="createOrder.order.label">Your Sale:</string>
+    <string name="createOrder.order.amount">Quantity</string>
+    <string name="createOrder.order.amountLimit">You cannot add more items than those available in stock</string>
+    <string name="createOrder.order.total">Total:</string>
+    <string name="createOrder.order.save">Register Sale</string>
+    <string name="createOrder.order.createdSuccessful">Sale Successfully Created</string>
+    <string name="createOrder.order.createdError">There was an error registering the sale. Try again</string>
 
     <!-- Inventory Screen -->
-    <string name="inventoryScene.welcome">%1$s Inventory</string>
+    <string name="inventoryScene.title">%1$s Inventory</string>
+    <string name="inventoryScene.noProducts">There are no products in the inventory\nAdd one!</string>
+    <string name="inventoryScene.addProduct">Add Product</string>
 
-    <!-- Managment Screen -->
-    <string name="managementScene.welcome">%1$s Management</string>
+    <!-- Add Product Screen & Items -->
+    <string name="product.label.id">Product ID: %1$d</string>
+    <string name="product.label.units">Units: %1$d</string>
+    <string name="product.label.add">Add Product</string>
+    <string name="product.label.name">Product Name</string>
+    <string name="product.hint.name">Red Clay Pot</string>
+    <string name="product.label.desc">Product Description</string>
+    <string name="product.hint.desc">20cm Diameter Pot</string>
+    <string name="product.label.price">Price (With Cents)</string>
+    <string name="product.hint.price">$49.99</string>
+    <string name="product.label.stock">Units</string>
+    <string name="product.hint.stock">5</string>
+    <string name="product.button">Add Product</string>
+    <string name="product.success">Product added successfully!</string>
+    <string name="product.error">Oops, there was an error creating the product.\nPlease try again</string>
+
+    <!-- Management Screen -->
+    <string name="managementScene.title">%1$s, it\'s all set.</string>
+    <string name="managementScene.subtitle">What are we doing today?</string>
+    <string name="managementScene.productsCount">You currently have %1$d items in your inventory.</string>
 
     <!-- Planning Scene -->
-    <string name="planningScene.welcome">%1$s Planning</string>
+    <string name="planningScene.title">%1$s Planning</string>
 
     <!-- Utils -->
     <string name="hello_blank_fragment">Testing Fragment!!</string>

@@ -99,20 +99,20 @@
     <string name="homeScene.welcome">Bienvenido, %1$s</string>
     <string name="homeScene.resume">Resumen financiero de hoy:</string>
     <string name="homeScene.pendant">Tus pendientes:</string>
-    <string name="homeScene.createOrder">Crear Pedido</string>
+    <string name="homeScene.createOrder">Registrar una Venta</string>
     <string name="homeScene.createOrder.subtitle">Selecciona un producto:</string>
     <string name="homeScene.noMovements">¡Tu día aún está en blanco!\nEl resumen aparecerá aquí tan pronto como algo suceda :)</string>
     <string name="homeScene.noPendants">No tienes ningún pendiente para el negocio\n ¡Genial!</string>
 
     <!-- Create Order -->
     <string name="createOrder.noProducts">No hay productos en el inventario\n ¡Añade uno desde la pestaña Inventario!</string>
-    <string name="createOrder.order.label">Tu Pedido:</string>
+    <string name="createOrder.order.label">Tu Venta:</string>
     <string name="createOrder.order.amount">Cantidad</string>
     <string name="createOrder.order.amountLimit">No puedes agregar más productos de los que hay en inventario</string>
     <string name="createOrder.order.total">Total:</string>
-    <string name="createOrder.order.save">Crear Pedido</string>
-    <string name="createOrder.order.createdSuccessful">Orden Creada Exitosamente</string>
-    <string name="createOrder.order.createdError">Hubo un error al crear la orden, intenta nuevamente</string>
+    <string name="createOrder.order.save">Registrar Venta</string>
+    <string name="createOrder.order.createdSuccessful">Venta Creada Exitosamente</string>
+    <string name="createOrder.order.createdError">Hubo un error al registrar la venta, intenta nuevamente</string>
 
 
     <!-- Inventory Screen -->
