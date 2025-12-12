@@ -79,6 +79,11 @@ class InventoryFragment : Fragment() {
         updateUI()
     }
 
+    override fun onResume() {
+        super.onResume()
+        updateUI()
+    }
+
     private fun updateUI(){
 
         lifecycleScope.launch {

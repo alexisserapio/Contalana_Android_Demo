@@ -9,7 +9,7 @@
     android:backgroundTint="@color/backgroundColor"
     tools:context=".a.ui.TabBarActivity">
 
-    <!-- ViewPager2 primero (ocupa todo el espacio) -->
+    <!-- ViewPager2 primero (ocupa el espacio) -->
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPager"
         android:backgroundTint="@color/backgroundColor"
@@ -24,9 +24,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
-        app:tabIndicatorColor="@android:color/white"
-        app:tabTextColor="@color/cl_darkGreen"
-        app:tabSelectedTextColor="@color/darkestGreen"
+        app:tabIndicatorColor="@color/cl_darkBlue"
+        app:tabIconTint="@color/tab_icon_selector"
+        app:tabTextColor="@color/cl_lightGreen"
+        app:tabSelectedTextColor="@color/cl_darkBlue"
         app:tabIndicatorHeight="3dp" />
 
 </LinearLayout>

@@ -86,15 +86,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
                 android:layout_marginBottom="10dp"
                 android:textColor="@color/cl_darkBlue"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/productImage"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:hint="Product Price"/>
+                app:layout_constraintBottom_toBottomOf="parent" />
 
             <View
                 android:id="@+id/separator"
@@ -104,14 +102,14 @@
                 app:layout_constraintStart_toEndOf="@+id/tvPrice"
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_marginBottom="10dp"
-                android:layout_marginStart="4dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginEnd="4dp"/>
 
             <TextView
                 android:id="@+id/tvUnits"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="10dp"
                 android:textColor="@color/cl_darkGreen"

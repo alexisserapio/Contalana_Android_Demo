@@ -1,6 +1,7 @@
 package com.alexisserapio.contalana_prototipe.a.application
 
 import android.app.Application
+import com.alexisserapio.contalana_prototipe.a.data.OrdersRepository
 import com.alexisserapio.contalana_prototipe.a.data.ProductsRepository
 import com.alexisserapio.contalana_prototipe.a.data.db.ContalanaDatabase
 
@@ -12,6 +13,9 @@ class ContalanaApp: Application() {
 
     val productsRepository by lazy{
         ProductsRepository(database.productDao())
+    }
+    val ordersRepository by lazy{
+        OrdersRepository(database.ordersDao())
     }
 
 

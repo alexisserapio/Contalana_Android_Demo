@@ -153,9 +153,6 @@ class AddProductFragment(
 
         })
 
-
-
-
     }
 
     override fun onStart() {

@@ -16,33 +16,35 @@
         android:layout_marginTop="20dp"
         android:layout_marginStart="30dp"
         android:text="@string/createOrder.order.label"
-        android:textSize="18dp"
+        android:textSize="24sp"
         android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/tvProductName"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tvOrder"
-        app:layout_constraintStart_toStartOf="parent"
-        android:textColor="@color/textColor"
-        android:layout_marginTop="50dp"
         android:layout_marginStart="30dp"
+        android:layout_marginTop="65dp"
+        android:layout_marginEnd="20dp"
         android:hint="Macetota"
-        android:textSize="20dp"
-        android:textStyle="normal"/>
+        android:textColor="@color/textColor"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/minusButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvOrder" />
 
     <TextView
         android:id="@+id/tvProductDesc"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/tvProductName"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/tvProductName"
         android:textColor="@color/textColor"
-        android:layout_marginTop="10dp"
         android:layout_marginStart="30dp"
         android:hint="Descripción"
-        android:textSize="16dp"
+        android:textSize="16sp"
         android:textStyle="italic"/>
 
     <TextView
@@ -50,16 +52,89 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/tvOrder"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/tvProductName"
-        android:layout_marginEnd="75dp"
+        app:layout_constraintEnd_toStartOf="@id/sumButton"
+        app:layout_constraintBottom_toTopOf="@id/tvAmountNumber"
+        app:layout_constraintStart_toEndOf="@id/minusButton"
         android:textColor="@color/darkestGray"
         android:layout_marginStart="30dp"
         android:text="@string/createOrder.order.amount"
-        android:textSize="16dp"
+        android:textSize="16sp"
         android:textStyle="bold"/>
 
+    <ImageView
+        android:id="@+id/minusButton"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:src="@drawable/ic_minus"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        app:layout_constraintTop_toTopOf="@id/tvProductName"
+        app:layout_constraintEnd_toStartOf="@id/tvAmountNumber"
+     />
 
+    <TextView
+        android:id="@+id/tvAmountNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="5"
+        android:textSize="28sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toStartOf="@id/sumButton"
+        app:layout_constraintTop_toTopOf="@id/tvProductName"
+        android:layout_marginEnd="20dp"
+       />
+
+    <ImageView
+        android:id="@+id/sumButton"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginEnd="30dp"
+        android:src="@drawable/ic_sum"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tvAmount"
+        app:layout_constraintTop_toTopOf="@id/tvProductName" />
+
+    <TextView
+        android:id="@+id/tvTotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/saveOrderButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="60dp"
+        android:layout_marginEnd="80dp"
+        android:textColor="@color/textColor"
+        android:text="@string/createOrder.order.total"
+        android:textSize="24sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/tvTotalNumber"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/tvTotal"
+        app:layout_constraintTop_toBottomOf="@id/tvTotal"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="120dp"
+        android:textColor="@color/textColor"
+        android:textSize="24sp"
+        android:textStyle="italic"/>
+
+    <Button
+        android:id="@+id/saveOrderButton"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="20dp"
+        android:text="@string/createOrder.order.save"
+        android:textSize="18sp"
+        app:cornerRadius="18dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:backgroundTint="@color/button_background_selector"
+        android:enabled="false"
+        android:textColor="@android:color/white"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

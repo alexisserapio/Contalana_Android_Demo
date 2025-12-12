@@ -6,16 +6,18 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.alexisserapio.contalana_prototipe.a.data.db.entities.BusinessEntity
 import com.alexisserapio.contalana_prototipe.a.data.db.entities.ClientEntity
+import com.alexisserapio.contalana_prototipe.a.data.db.entities.OrderEntity
 import com.alexisserapio.contalana_prototipe.a.data.db.entities.ProductEntity
 import com.alexisserapio.contalana_prototipe.a.utils.Constants
 
 @Database(
-    entities = [ProductEntity::class, BusinessEntity::class, ClientEntity::class],
+    entities = [ProductEntity::class, BusinessEntity::class, ClientEntity::class, OrderEntity::class],
     version = 1
 )
 abstract class ContalanaDatabase: RoomDatabase() {
     //Aquí va la función del DAO
     abstract fun productDao(): ProductDAO
+    abstract fun ordersDao(): OrderDAO
    /* abstract fun businessDao(): BusinessDAO
     abstract fun clientDao(): ClientDAO */
 
