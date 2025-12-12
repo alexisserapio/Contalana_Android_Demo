@@ -19,6 +19,7 @@
     <string name="infoPoster.title.three">Contalana apoya al crecimiento de mi negocio</string>
     <string name="infoPoster.description.three">¡Trabajemos juntos para lograr sacar el máximo potencial de tu negocio!</string>
     <string name="infoPoster.button">Continuar</string>
+
     <!-- BName Activity -->
     <string name="bName.title">¿Estás listo para llevar la gestión de tu negocio a otro nivel?</string>
     <string name="bName.subtitle">¿Con que nombre te gustaría que nos refirieramos a tu negocio?</string>
@@ -103,6 +104,7 @@
     <string name="homeScene.createOrder.subtitle">Selecciona un producto:</string>
     <string name="homeScene.noMovements">¡Tu día aún está en blanco!\nEl resumen aparecerá aquí tan pronto como algo suceda :)</string>
     <string name="homeScene.noPendants">No tienes ningún pendiente para el negocio\n ¡Genial!</string>
+    <string name="homeScene.totalGains">%1$s en Ganancias Hoy. ¡Muy Bien!</string>
 
     <!-- Create Order -->
     <string name="createOrder.noProducts">No hay productos en el inventario\n ¡Añade uno desde la pestaña Inventario!</string>

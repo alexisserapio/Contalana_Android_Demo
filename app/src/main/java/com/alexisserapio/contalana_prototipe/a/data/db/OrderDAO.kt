@@ -27,6 +27,9 @@ interface OrderDAO {
     @Query("SELECT * FROM ${Constants.DATABASE_ORDERS_TABLE} ORDER BY order_id DESC")
     fun getAllOrdersFlow(): Flow<List<OrderEntity>>
 
+    @Query("SELECT SUM(total) FROM ${Constants.DATABASE_ORDERS_TABLE}")
+    suspend fun getTotalOfAllOrders(): Double?
+
     //Upate
     @Update
     suspend fun updateOrder(order: OrderEntity)

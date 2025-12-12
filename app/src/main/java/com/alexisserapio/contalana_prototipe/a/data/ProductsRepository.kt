@@ -12,6 +12,7 @@ class ProductsRepository(
 
     suspend fun getAllProducts(): MutableList<ProductEntity> = productDAO.getAllProducts()
 
+
     suspend fun updateProduct(product: ProductEntity) {
         productDAO.updateProduct(product)
     }

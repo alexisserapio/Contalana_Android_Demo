@@ -23,6 +23,7 @@
         android:textColor="@color/textColor"/>
 
     <ImageView
+        android:id="@+id/ivEmptyIcon"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:src="@drawable/ic_empty"
@@ -71,13 +72,29 @@
         android:gravity="center"
         android:text="@string/homeScene.noMovements"
         android:textColor="@color/cl_darkBlue"
-        android:textSize="14dp"
+        android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/tvHomePendant"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvHomeResume"
         app:layout_constraintVertical_bias="0.6" />
+
+    <TextView
+        android:id="@+id/tvTotalGains"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:hint="@string/homeScene.totalGains"
+        android:textColor="@color/cl_lightGreen"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/tvHomePendant"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvHomeResume"
+        app:layout_constraintVertical_bias="0.1"
+        android:visibility="invisible"/>
+
 
     <TextView
         android:id="@+id/tvHomePendant"
