@@ -20,4 +20,7 @@ data class OrderEntity(
     @ColumnInfo(name = "total")
     var total: Double?,
 
+    @ColumnInfo(name ="sale_date")
+    var saleDate: Long?
+
 )

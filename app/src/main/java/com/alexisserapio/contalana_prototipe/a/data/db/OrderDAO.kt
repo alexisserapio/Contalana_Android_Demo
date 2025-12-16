@@ -5,8 +5,8 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
+import com.alexisserapio.contalana_prototipe.a.data.model.DailyIncome
 import com.alexisserapio.contalana_prototipe.a.data.db.entities.OrderEntity
-import com.alexisserapio.contalana_prototipe.a.data.db.entities.ProductEntity
 import com.alexisserapio.contalana_prototipe.a.utils.Constants
 import kotlinx.coroutines.flow.Flow
 
@@ -29,6 +29,17 @@ interface OrderDAO {
 
     @Query("SELECT SUM(total) FROM ${Constants.DATABASE_ORDERS_TABLE}")
     fun getTotalOfAllOrders(): Flow<Double?>
+
+    @Query("""
+    SELECT 
+        MAX(sale_date) AS day, -- Devuelve el Long (Timestamp) del último registro del día
+        SUM(total) AS totalIncome
+    FROM ${Constants.DATABASE_ORDERS_TABLE}
+    GROUP BY strftime('%Y-%m-%d', sale_date / 1000, 'unixepoch', 'localtime')
+    ORDER BY day ASC
+""")
+    fun getDailyIncome(): Flow<List<DailyIncome>>
+
 
     //Upate
     @Update

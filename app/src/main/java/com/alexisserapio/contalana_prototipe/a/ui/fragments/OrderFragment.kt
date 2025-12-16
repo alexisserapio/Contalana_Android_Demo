@@ -16,11 +16,14 @@ import com.alexisserapio.contalana_prototipe.a.data.OrdersRepository
 import com.alexisserapio.contalana_prototipe.a.data.ProductsRepository
 import com.alexisserapio.contalana_prototipe.a.data.db.entities.OrderEntity
 import com.alexisserapio.contalana_prototipe.a.data.db.entities.ProductEntity
+import com.alexisserapio.contalana_prototipe.a.utils.toFormattedDateString
 import com.alexisserapio.contalana_prototipe.databinding.FragmentOrderBinding
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import java.io.IOException
+import java.text.DateFormat
 import java.text.NumberFormat
+import java.util.Date
 
 class OrderFragment(
     private var product: ProductEntity = ProductEntity(
@@ -43,7 +46,8 @@ class OrderFragment(
     private var order: OrderEntity = OrderEntity(
         productId = 0,
         pricePerUnit = 0.0,
-        total = 0.0
+        total = 0.0,
+        saleDate = null
     )
 ) : DialogFragment() {
 
@@ -122,12 +126,19 @@ class OrderFragment(
         productsRepository =(requireContext().applicationContext as ContalanaApp).productsRepository
         ordersRepository =(requireContext().applicationContext as ContalanaApp).ordersRepository
 
-        Log.e("APPLOGS", "Order Total: $orderTotal")
+        val fecha = Date().time
+        val fechaConvertida = fecha.toFormattedDateString(DateFormat.MEDIUM)
+
+
+        Log.e("APPLOGS", "Order Total: $orderTotal, fecha: $fechaConvertida")
         order.productId = productInOrder.id
         order.pricePerUnit = productInOrder.price
         order.total = orderTotal
 
+        order.saleDate = Date().time
+
         product.stock = productInOrder.stock - amountOfProducts
+
 
         try{
             lifecycleScope.launch {
