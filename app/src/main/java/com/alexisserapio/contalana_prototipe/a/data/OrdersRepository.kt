@@ -13,9 +13,11 @@ class OrdersRepository(
 
     suspend fun getAllOrders(): MutableList<OrderEntity> = orderDAO.getAllOrders()
 
-    suspend fun getTotalOfAllOrders(): Double {
+    fun getTotalOfAllOrdersFlow() = orderDAO.getTotalOfAllOrders()
+
+    /*suspend fun getTotalOfAllOrders(): Double {
         return orderDAO.getTotalOfAllOrders() ?: 0.0
-    }
+    }*/
 
     suspend fun updateOrder(order: OrderEntity) {
         orderDAO.updateOrder(order)

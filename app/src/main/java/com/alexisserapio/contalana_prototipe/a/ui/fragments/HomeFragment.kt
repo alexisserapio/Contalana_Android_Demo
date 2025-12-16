@@ -81,19 +81,29 @@ class HomeFragment : Fragment() {
     }
 
     private fun observe() {
+
         lifecycleScope.launch {
-            orders = orderRespository.getAllOrders()
-            val totalGains = orderRespository.getTotalOfAllOrders()
 
-            binding.apply {
-                tvNoMovements.visibility =
-                    if(orders.isEmpty()) View.VISIBLE else View.INVISIBLE
-                ivEmptyIcon.visibility =
-                    if(orders.isEmpty()) View.VISIBLE else View.INVISIBLE
+            orderRespository.getTotalOfAllOrdersFlow().collect { totalGains: Double? ->
 
-                tvTotalGains.text = getString(R.string.homeScene_totalGains, currencyFormatter.format(totalGains).trim())
-                tvTotalGains.visibility =
-                    if(orders.isNotEmpty()) View.VISIBLE else View.INVISIBLE
+                val gainsToDisplay = totalGains ?: 0.0
+
+                val orders = orderRespository.getAllOrdersFlow().first()
+
+                binding.apply {
+
+                    val isNotEmpty = orders.isNotEmpty()
+
+                    tvNoMovements.visibility = if (!isNotEmpty) View.VISIBLE else View.INVISIBLE
+                    ivEmptyIcon.visibility = if (!isNotEmpty) View.VISIBLE else View.INVISIBLE
+
+                    tvTotalGains.text = getString(
+                        R.string.homeScene_totalGains,
+                        currencyFormatter.format(gainsToDisplay).trim()
+                    )
+
+                    tvTotalGains.visibility = if (isNotEmpty) View.VISIBLE else View.INVISIBLE
+                }
             }
         }
     }

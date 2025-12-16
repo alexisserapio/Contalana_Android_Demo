@@ -144,7 +144,7 @@
     <string name="managementScene.productsCount">Actualmente tienes %1$d existencias en tu inventario.</string>
 
     <!-- Planning Scene -->
-    <string name="planningScene.title">Planeación de %1$s</string>
+    <string name="planningScene.title">Analisis de %1$s</string>
 
     <!-- Utils -->
     <string name="hello_blank_fragment">Probando Fragment!!</string>
