@@ -1,25 +1,52 @@
 package com.alexisserapio.contalana_prototipe.a.ui.fragments
 
+import android.Manifest
+import android.app.Activity
+import android.app.AlertDialog
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.Matrix
+import android.media.ExifInterface
+import android.net.Uri
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.os.Environment
+import android.provider.MediaStore
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import androidx.core.content.FileProvider
+import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import com.alexisserapio.contalana_prototipe.R
 import com.alexisserapio.contalana_prototipe.a.application.ContalanaApp
 import com.alexisserapio.contalana_prototipe.a.data.ProductsRepository
 import com.alexisserapio.contalana_prototipe.a.data.db.entities.ProductEntity
+import com.alexisserapio.contalana_prototipe.a.utils.Constants.CAMERA_PERMISSION
 import com.alexisserapio.contalana_prototipe.databinding.FragmentAddProductBinding
+import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
+import java.io.File
+import java.io.FileOutputStream
 import java.io.IOException
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 
 class AddProductFragment(
@@ -43,8 +70,29 @@ class AddProductFragment(
     private val updateUI: () -> Unit
 
 ) : BottomSheetDialogFragment() {
+
+    val galleryLauncher = registerForActivityResult(
+        ActivityResultContracts.GetContent()
+    ) { uri: Uri? ->
+        uri?.let { selectedPhotoUri ->
+            val savedFileUri = saveImageToInternalStorage(selectedPhotoUri)
+
+            Glide.with(this)
+                .load(selectedPhotoUri)
+                .centerCrop()
+                .into(binding.ivTakenPhoto)
+
+            photoToSave = savedFileUri.toString()
+        }
+    }
     private var _binding: FragmentAddProductBinding? = null
     private val binding get() = _binding!!
+    private var cameraPermissionGranted = false
+    private var isCameraActive = false
+    private var currentPhotoPath: String? = null
+    private var photoToSave: String? = null
+    private lateinit var resultLauncher: ActivityResultLauncher<Intent>
+
     private lateinit var productsRepository: ProductsRepository
     private val maxLength = 26
     private val minLength = 5
@@ -153,6 +201,52 @@ class AddProductFragment(
 
         })
 
+        binding.cameraButton.setOnClickListener {
+            val dialog = BottomSheetDialog(requireContext())
+            // Creamos una vista sencilla inflada desde un pequeño layout o creada por código
+            val view = layoutInflater.inflate(R.xml.bottom_sheet_dialog, null)
+
+            // Configuramos los clics de las opciones
+            view.findViewById<LinearLayout>(R.id.option_camera).setOnClickListener {
+                updateOrRequestCameraPermission()
+                dialog.dismiss()
+            }
+
+            view.findViewById<LinearLayout>(R.id.option_gallery).setOnClickListener {
+                galleryLauncher.launch("image/*")
+                dialog.dismiss()
+            }
+
+            dialog.setContentView(view)
+            dialog.show()
+        }
+
+        resultLauncher = registerForActivityResult(
+            ActivityResultContracts.StartActivityForResult()
+        ){ result ->
+            currentPhotoPath?.let{ path ->
+                val file = File(path)
+
+                if(result.resultCode == Activity.RESULT_OK){
+                    if(file.length() > 0L){
+                        photoToSave = currentPhotoPath
+
+                        Glide.with(this)
+                            .load(file)
+                            .into(binding.ivTakenPhoto)
+
+                        binding.cameraButton.isVisible = false
+
+                    }else{
+                        file.delete()
+                    }
+                }else{
+                    file.delete()
+                }
+            }
+            isCameraActive = false
+        }
+
     }
 
     override fun onStart() {
@@ -172,14 +266,90 @@ class AddProductFragment(
         behavior.skipCollapsed = true
     }
 
+    private fun updateOrRequestCameraPermission(){
+        cameraPermissionGranted = ContextCompat.checkSelfPermission(
+            requireContext(),
+            Manifest.permission.CAMERA
+        ) == PackageManager.PERMISSION_GRANTED
+
+        val permissionsToRequest = mutableListOf<String>()
+
+        if(!cameraPermissionGranted)
+            permissionsToRequest.add(Manifest.permission.CAMERA)
+
+        if(permissionsToRequest.isNotEmpty()){
+            //Tenemos que pedir el permiso
+            ActivityCompat.requestPermissions(
+                requireContext() as Activity,
+                permissionsToRequest.toTypedArray(),
+                CAMERA_PERMISSION
+            )
+        }else{
+            //Tenemos el permiso!
+            actionPermissionGranted()
+        }
+    }
+
+    private fun actionPermissionGranted(){
+        if(!isCameraActive)
+            startIntentCamera()
+    }
+
+    private fun startIntentCamera(){
+        try {
+            //Generamos un contenedor para el archivo
+            val imageFile = File.createTempFile(
+                "photo",
+                ".jpg",
+                requireContext().getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+            )
+
+            currentPhotoPath = imageFile.absolutePath
+
+            //Con el archivo generamos un URi con la authority correspondiente
+            val imageUri = FileProvider.getUriForFile(
+                requireContext(),
+                "com.alexisserapio.contalana_prototipe.fileprovider",
+                imageFile
+            )
+
+            //Generamos el intent hacia la camara
+            val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE).apply {
+                putExtra(MediaStore.EXTRA_OUTPUT, imageUri)
+            }
+
+            //Mandamos el intent
+            resultLauncher.launch(intent)
+
+            isCameraActive = true
+
+        }catch (e: IOException){
+            //Manejamos la excepción
+        }
+    }
+
+    fun rotateImageIfRequired(img: Bitmap, selectedImagePath: String): Bitmap {
+        val ei = ExifInterface(selectedImagePath)
+        val orientation: Int = ei.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL)
+
+        return when (orientation) {
+            ExifInterface.ORIENTATION_ROTATE_90 -> rotateImage(img, 90f)
+            ExifInterface.ORIENTATION_ROTATE_180 -> rotateImage(img, 180f)
+            ExifInterface.ORIENTATION_ROTATE_270 -> rotateImage(img, 270f)
+            else -> img
+        }
+    }
+
+    fun rotateImage(img: Bitmap, degree: Float): Bitmap {
+        val matrix = Matrix()
+        matrix.postRotate(degree)
+        val rotatedImg = Bitmap.createBitmap(img, 0, 0, img.width, img.height, matrix, true)
+        img.recycle()
+        return rotatedImg
+    }
+
     private fun updateButtonState(){
 
-        /*val parsedNumber = try {
-            currencyFormatter.parse(priceText) // Esto devuelve un Number
-        } catch (e: Exception) {
-            // Manda error si el texto no es un formato de número/moneda válido
-            null
-        }*/
         val priceText = binding.etProductPrice.text.toString().trim()
         val unitsText = binding.etProductStock.text.toString().trim()
 
@@ -215,6 +385,7 @@ class AddProductFragment(
 
         product.productName = productName
         product.productDescription = productDesc
+        product.image = photoToSave
         if (productPrice != null) {
             product.price = productPrice
         }
@@ -222,10 +393,13 @@ class AddProductFragment(
             product.stock = productUnits
         }
 
+
         try{
             lifecycleScope.launch {
                 val result = async{
+
                     productsRepository.insertProduct(product)
+                    Log.e("APPSLOG", product.toString())
                 }
 
                 result.await()
@@ -332,6 +506,33 @@ class AddProductFragment(
                 editText.requestFocus()
             }
             return
+        }
+    }
+
+    private fun saveImageToInternalStorage(uri: Uri): Uri? {
+        return try {
+
+            val timeStamp = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())
+            val fileName = "IMG_GALLERY_$timeStamp.jpg"
+
+            // Buscamos la carpeta de archivos de tu app
+            val file = File(requireContext().getExternalFilesDir(Environment.DIRECTORY_PICTURES), fileName)
+
+            // Copiamos los datos
+            val inputStream = requireContext().contentResolver.openInputStream(uri)
+            val outputStream = FileOutputStream(file)
+
+            inputStream?.use { input ->
+                outputStream.use { output ->
+                    input.copyTo(output)
+                }
+            }
+
+            // Devolvemos el URI del nuevo archivo local
+            Uri.fromFile(file)
+        } catch (e: Exception) {
+            e.printStackTrace()
+            null
         }
     }
 

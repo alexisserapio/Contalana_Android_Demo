@@ -43,7 +43,7 @@ class InventoryFragment : Fragment() {
 
         lifecycleScope.launch {
             val preferences = requireContext().dataStore.data.first() // suspende hasta obtener el primer valor
-            val businessName = preferences[DataStoreManager.BUSINESS_NAME] ?: ""
+            val businessName = preferences[DataStoreManager.BUSINESS_NAME] ?: getString(R.string.defaultBusinessName)
             binding.tvInventoryTitle.text = getString(R.string.inventoryScene_title, businessName)
 
         }

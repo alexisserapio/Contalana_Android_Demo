@@ -32,7 +32,7 @@ interface OrderDAO {
 
     @Query("""
     SELECT 
-        MAX(sale_date) AS day, -- Devuelve el Long (Timestamp) del último registro del día
+        MAX(sale_date) AS day,
         SUM(total) AS totalIncome
     FROM ${Constants.DATABASE_ORDERS_TABLE}
     GROUP BY strftime('%Y-%m-%d', sale_date / 1000, 'unixepoch', 'localtime')

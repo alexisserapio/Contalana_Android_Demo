@@ -9,4 +9,6 @@ object Constants {
     const val DATABASE_CLIENTS_TABLE = "clients_data_table"
     const val DATABASE_ORDERS_TABLE = "orders_data_table"
 
+    const val CAMERA_PERMISSION = 1 //request id del permiso
+
 }

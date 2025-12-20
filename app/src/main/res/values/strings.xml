@@ -137,6 +137,11 @@
     <string name="product.button">Agregar Producto</string>
     <string name="product.success">¡Producto añadido exitosamente!</string>
     <string name="product.error">Ups, hubo un error al crear el producto.\nIntentalo Nuevamente</string>
+    <string name="product.label.image">Selecciona una imagen para el producto</string>
+    <string name="product.label.button">Selecciona una Imagen</string>
+    <string name="product.sheet.title">Selecciona una opción</string>
+    <string name="product.sheet.camera">Tomar con la Cámara</string>
+    <string name="product.sheet.gallery">Seleccionar de la Galería</string>
 
     <!-- Managment Screen -->
     <string name="managementScene.title">%1$s, está listo.</string>
@@ -148,6 +153,7 @@
 
     <!-- Utils -->
     <string name="hello_blank_fragment">Probando Fragment!!</string>
+    <string name="defaultBusinessName">Tu Negocio</string>
 
 
 </resources>

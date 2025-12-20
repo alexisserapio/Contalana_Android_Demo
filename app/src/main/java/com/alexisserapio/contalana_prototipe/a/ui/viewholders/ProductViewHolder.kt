@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.alexisserapio.contalana_prototipe.R
 import com.alexisserapio.contalana_prototipe.a.data.db.entities.ProductEntity
 import com.alexisserapio.contalana_prototipe.databinding.ProductElementBinding
+import com.bumptech.glide.Glide
 import java.text.NumberFormat
 
 class ProductViewHolder(
@@ -38,6 +39,20 @@ class ProductViewHolder(
             tvDescription.text = product.productDescription
             tvPrice.text = currencyFormatter.format(product.price).trim()
             tvUnits.text = context.getString(R.string.product_label_units, product.stock)
+
+            val imagePath = product.image // Este es el String que guardaste
+
+            if (!imagePath.isNullOrEmpty()) {
+                Glide.with(productImage)
+                    .load(imagePath)
+                    .centerCrop()
+                    .error(R.drawable.ic_missing_product) // Si el archivo fue borrado
+                    .into(binding.productImage)
+            } else {
+                binding.productImage.setImageResource(R.drawable.ic_missing_product)
+            }
+
+
         }
     }
 

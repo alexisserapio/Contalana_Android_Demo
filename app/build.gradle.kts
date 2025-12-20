@@ -74,6 +74,8 @@ dependencies {
     implementation(libs.material.v190)
     //Tink
     implementation(libs.tink.android)
+    //Glide
+    implementation(libs.github.glide)
     //datastore preferences
     implementation(libs.androidx.datastore.preferences)
     //lifecycle
@@ -85,11 +87,11 @@ dependencies {
     //Firebase Auth
     implementation(libs.firebase.auth)
     //Bibliotecas para Credential Manager
-    implementation("androidx.credentials:credentials:1.5.0")
-    implementation("androidx.credentials:credentials-play-services-auth:1.5.0")
-    implementation("com.google.android.libraries.identity.googleid:googleid:1.1.1")
+    implementation(libs.androidx.credentials)
+    implementation(libs.androidx.credentials.play.services.auth)
+    implementation(libs.googleid)
     //Barras
-    implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
+    implementation(libs.mpandroidchart)
     implementation(libs.androidx.lifecycle.runtime.ktx)
 
     ksp(libs.androidx.room.compiler)

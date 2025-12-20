@@ -129,6 +129,7 @@ class LoginActivity : AppCompatActivity() {
                 preferences[DataStoreManager.BUSINESS_EXISTS] = true
                 preferences[DataStoreManager.FORM_ANSWERED] = true
                 preferences[DataStoreManager.USER_EXISTS] = true
+                preferences[DataStoreManager.USER_NAME] = firebaseAuth.currentUser?.email.toString()
             }
 
             withContext(Dispatchers.Main){

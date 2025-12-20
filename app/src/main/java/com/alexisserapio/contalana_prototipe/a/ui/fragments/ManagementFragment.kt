@@ -44,7 +44,7 @@ class ManagementFragment : Fragment() {
 
         lifecycleScope.launch {
             val preferences = requireContext().dataStore.data.first() // suspende hasta obtener el primer valor
-            val businessName = preferences[DataStoreManager.BUSINESS_NAME] ?: ""
+            val businessName = preferences[DataStoreManager.BUSINESS_NAME] ?: getString(R.string.defaultBusinessName)
             binding.tvManagementTitle.text = getString(R.string.managementScene_title, businessName)
         }
 

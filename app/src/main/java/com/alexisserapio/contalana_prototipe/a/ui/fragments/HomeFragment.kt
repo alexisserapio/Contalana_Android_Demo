@@ -52,7 +52,7 @@ class HomeFragment : Fragment() {
         lifecycleScope.launch {
             val preferences = requireContext().dataStore.data.first() // suspende hasta obtener el primer valor
             val userName = preferences[DataStoreManager.USER_NAME] ?: ""
-            val businessName = preferences[DataStoreManager.BUSINESS_NAME] ?: ""
+            val businessName = preferences[DataStoreManager.BUSINESS_NAME] ?: getString(R.string.defaultBusinessName)
 
             binding.tvHomeTitle.text = getString(R.string.homeScene_welcome, userName)
             binding.tvBusinessName.text = businessName
