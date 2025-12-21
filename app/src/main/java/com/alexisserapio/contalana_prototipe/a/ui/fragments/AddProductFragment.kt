@@ -13,6 +13,7 @@ import android.os.Bundle
 import android.os.CountDownTimer
 import android.os.Environment
 import android.provider.MediaStore
+import android.provider.Settings
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
@@ -279,14 +280,56 @@ class AddProductFragment(
 
         if(permissionsToRequest.isNotEmpty()){
             //Tenemos que pedir el permiso
-            ActivityCompat.requestPermissions(
-                requireContext() as Activity,
+            requestPermissions(
                 permissionsToRequest.toTypedArray(),
                 CAMERA_PERMISSION
             )
         }else{
             //Tenemos el permiso!
             actionPermissionGranted()
+        }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if(grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+            //El usuario nos proporcionó el permiso
+            actionPermissionGranted()
+        }else{
+            if(shouldShowRequestPermissionRationale(permissions[0].toString())){
+                //Puedo mostrar el rationale
+                androidx.appcompat.app.AlertDialog.Builder(requireContext())
+                    .setTitle(getString(R.string.product_permissions_title))
+                    .setMessage(getString(R.string.product_permissions_message))
+                    .setPositiveButton(getString(R.string.product_permissions_understood)){_,_ ->
+                        updateOrRequestCameraPermission()
+                    }
+                    .setNegativeButton(getString(R.string.product_permissions_dismiss)){dialog,_ ->
+                        dialog.dismiss()
+                    }.create().show()
+            }else{
+                androidx.appcompat.app.AlertDialog.Builder(requireContext())
+                    .setTitle(getString(R.string.product_permissions_denied_title))
+                    .setMessage(getString(R.string.product_permissions_denied_message))
+                    .setNeutralButton(getString(R.string.product_permissions_denied_settings)){ _, _ ->
+                        startActivity(Intent(
+                            Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
+                            Uri.fromParts(
+                                "package",
+                                requireContext().packageName,
+                                null
+                            )
+                        ))
+                    }
+                    .setOnDismissListener { dialog ->
+                        dialog.dismiss()
+                    }
+                    .create().show()
+            }
         }
     }
 

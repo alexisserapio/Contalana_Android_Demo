@@ -1,10 +1,14 @@
 package com.alexisserapio.contalana_prototipe.a.ui.fragments
 
+import android.graphics.drawable.ColorDrawable
 import android.icu.text.DateFormat
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.graphics.ColorUtils
+import androidx.core.view.WindowInsetsControllerCompat
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -25,7 +29,9 @@ import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.withContext
 
 class PlanningFragment : Fragment() {
     private var _binding: FragmentPlanningBinding? = null
@@ -54,14 +60,32 @@ class PlanningFragment : Fragment() {
         ordersRepository = (requireContext().applicationContext as ContalanaApp).ordersRepository
 
         collectDailyIncome()
+        checkTicket()
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        collectDailyIncome()
+        checkTicket()
     }
 
     private fun collectDailyIncome() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 ordersRepository.getDailyIncome().collect { data ->
-                    setupBarChart(data)
+                    if (data.isEmpty()){
+                        binding.barChar.isVisible = false
+                    }else{
+                        setupBarChart(data)
+
+                        binding.apply {
+                            tvNoData.visibility = View.INVISIBLE
+                            ivNoData.visibility = View.INVISIBLE
+                            barChar.visibility = View.VISIBLE
+                        }
+                    }
+
                 }
             }
         }
@@ -102,5 +126,21 @@ class PlanningFragment : Fragment() {
         }
     }
 
+    private fun checkTicket(){
+        lifecycleScope.launch(Dispatchers.IO) {
+            val avgTicket = ordersRepository.getAverageTicket()
+
+            withContext(Dispatchers.Main){
+                if(avgTicket == 0.0){
+                    binding.tvTicket.visibility = View.INVISIBLE
+                    binding.tvNoTicket.visibility = View.VISIBLE
+                }else{
+                    binding.tvTicket.visibility = View.VISIBLE
+                    binding.tvTicket.text = getString(R.string.planningScene_ticket, String.format("%.2f", avgTicket))
+                    binding.tvNoTicket.visibility = View.INVISIBLE
+                }
+            }
+        }
+    }
 
 }

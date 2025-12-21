@@ -11,7 +11,7 @@ class ProductsRepository(
     }
 
     suspend fun getAllProducts(): MutableList<ProductEntity> = productDAO.getAllProducts()
-
+    fun getAllProductsFlow() = productDAO.getAllProductsFlow()
 
     suspend fun updateProduct(product: ProductEntity) {
         productDAO.updateProduct(product)
@@ -20,8 +20,5 @@ class ProductsRepository(
     suspend fun deleteProduct(product: ProductEntity) {
         productDAO.deleteProduct(product)
     }
-
-    fun getAllProductsFlow() = productDAO.getAllProductsFlow()
-
 
 }

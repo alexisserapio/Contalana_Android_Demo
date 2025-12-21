@@ -58,14 +58,6 @@ class HomeFragment : Fragment() {
             binding.tvBusinessName.text = businessName
         }
 
-        binding.createOrderButton.setOnClickListener {
-            val fragmentCreateOrder = CreateOrderFragment()
-            //val fragmentAddProduct = AddProductFragment.newInstance()
-
-            fragmentCreateOrder.show(childFragmentManager, "createOrderFragment")
-
-        }
-
         observe()
 
     }

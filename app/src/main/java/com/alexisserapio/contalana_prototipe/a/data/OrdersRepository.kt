@@ -5,6 +5,7 @@ import com.alexisserapio.contalana_prototipe.a.data.db.entities.OrderEntity
 import com.alexisserapio.contalana_prototipe.a.data.db.entities.ProductEntity
 import com.alexisserapio.contalana_prototipe.a.data.model.DailyIncome
 import kotlinx.coroutines.flow.Flow
+import java.util.Calendar
 
 class OrdersRepository(
     private val orderDAO: OrderDAO
@@ -17,12 +18,28 @@ class OrdersRepository(
 
     fun getTotalOfAllOrdersFlow() = orderDAO.getTotalOfAllOrders()
 
-    /*suspend fun getTotalOfAllOrders(): Double {
-        return orderDAO.getTotalOfAllOrders() ?: 0.0
-    }*/
-
     fun getDailyIncome(): Flow<List<DailyIncome>> {
         return orderDAO.getDailyIncome()
+    }
+
+    fun getAverageTicket(): Double {
+        // 1. Obtenemos el inicio y fin del día actual
+        val calendar = Calendar.getInstance()
+
+        calendar.set(Calendar.HOUR_OF_DAY, 0)
+        calendar.set(Calendar.MINUTE, 0)
+        calendar.set(Calendar.SECOND, 0)
+        calendar.set(Calendar.MILLISECOND, 0)
+        val startOfDay = calendar.timeInMillis
+
+        calendar.set(Calendar.HOUR_OF_DAY, 23)
+        calendar.set(Calendar.MINUTE, 59)
+        calendar.set(Calendar.SECOND, 59)
+        calendar.set(Calendar.MILLISECOND, 999)
+        val endOfDay = calendar.timeInMillis
+
+        // 2. Llamamos al DAO
+        return orderDAO.getAverageTicket(startOfDay, endOfDay)
     }
 
     suspend fun updateOrder(order: OrderEntity) {

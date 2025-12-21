@@ -22,10 +22,101 @@
         android:textStyle="bold"
         android:textColor="@color/textColor"/>
 
+    <TextView
+        android:id="@+id/tvChartTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tvPlanningTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/barchart.title"
+        android:textColor="@color/textColor"
+        android:textStyle="bold"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="30dp"
+        android:textSize="18sp"
+        />
+
     <com.github.mikephil.charting.charts.BarChart
         android:id="@+id/barChar"
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        app:layout_constraintTop_toBottomOf="@id/tvPlanningTitle"/>
+        app:layout_constraintTop_toBottomOf="@id/tvChartTitle"/>
+
+    <TextView
+        android:id="@+id/tvNoData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/barchart.noData"
+        android:textAlignment="center"
+        android:textColor="@color/grey"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.38" />
+
+    <ImageView
+        android:id="@+id/ivNoData"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/ic_management"
+        app:layout_constraintBottom_toTopOf="@id/tvNoData"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="20dp"
+        />
+
+    <TextView
+        android:id="@+id/tvTicketTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/planningScene.ticket.title"
+        android:textColor="@color/textColor"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvChartTitle"
+        app:layout_constraintVertical_bias="0.55" />
+
+    <TextView
+        android:id="@+id/tvNoTicket"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/planningScene.ticket.noData"
+        android:textAlignment="center"
+        android:textColor="@color/grey"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTicketTitle"
+        app:layout_constraintVertical_bias="0.2" />
+
+    <TextView
+        android:id="@+id/tvTicket"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/planningScene.ticket"
+        android:textAlignment="center"
+        android:textColor="@color/cl_darkBlue"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTicketTitle"
+        app:layout_constraintVertical_bias="0.2" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

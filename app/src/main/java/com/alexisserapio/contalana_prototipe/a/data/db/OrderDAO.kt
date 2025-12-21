@@ -40,6 +40,13 @@ interface OrderDAO {
 """)
     fun getDailyIncome(): Flow<List<DailyIncome>>
 
+    @Query("""
+    SELECT COALESCE(AVG(total), 0.0) 
+    FROM ${Constants.DATABASE_ORDERS_TABLE}
+    WHERE sale_date >= :startOfDay AND sale_date <= :endOfDay
+""")
+    fun getAverageTicket(startOfDay: Long, endOfDay: Long): Double
+
 
     //Upate
     @Update

@@ -142,6 +142,13 @@
     <string name="product.sheet.title">Selecciona una opción</string>
     <string name="product.sheet.camera">Tomar con la Cámara</string>
     <string name="product.sheet.gallery">Seleccionar de la Galería</string>
+    <string name="product.permissions.title">Permiso Requerido</string>
+    <string name="product.permissions.message">Se requiere el permiso para poder mostrar una imagen real de tu producto</string>
+    <string name="product.permissions.understood">Entendido</string>
+    <string name="product.permissions.dismiss">Cancelar</string>
+    <string name="product.permissions.denied.title">Permiso Denegado</string>
+    <string name="product.permissions.denied.message">El permiso se ha negado permanentemente, por favor activalo desde la configuración de la aplicación</string>
+    <string name="product.permissions.denied.settings">Ir a Configuración</string>
 
     <!-- Managment Screen -->
     <string name="managementScene.title">%1$s, está listo.</string>
@@ -150,6 +157,11 @@
 
     <!-- Planning Scene -->
     <string name="planningScene.title">Analisis de %1$s</string>
+    <string name="barchart.title">Tus Ganancias por día:</string>
+    <string name="barchart.noData">Aún no hay ventas registradas\n¡Registra una para comenzar tu planeación!</string>
+    <string name="planningScene.ticket.title">Ticket promedio:</string>
+    <string name="planningScene.ticket.noData">Aquí encontraras un aproximado de cuanto ganas al día</string>
+    <string name="planningScene.ticket">Tu ticket diario es de: %1$s. ¡Vas por buen camino!</string>
 
     <!-- Utils -->
     <string name="hello_blank_fragment">Probando Fragment!!</string>

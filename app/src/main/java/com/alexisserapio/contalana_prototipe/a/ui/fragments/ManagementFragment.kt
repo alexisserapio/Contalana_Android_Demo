@@ -48,6 +48,12 @@ class ManagementFragment : Fragment() {
             binding.tvManagementTitle.text = getString(R.string.managementScene_title, businessName)
         }
 
+        binding.createOrderButton.setOnClickListener {
+            val fragmentCreateOrder = CreateOrderFragment()
+            fragmentCreateOrder.show(childFragmentManager, "createOrderFragment")
+
+        }
+
         observeProducts()
     }
 

@@ -52,6 +52,21 @@
         android:textStyle="bold"
         android:textColor="@color/textColor"/>
 
+    <Button
+        android:id="@+id/createOrderButton"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:text="@string/homeScene.createOrder"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="30dp"
+        android:layout_marginStart="30dp"
+        android:backgroundTint="@color/cl_darkGreen"
+        app:cornerRadius="14dp"
+        android:textSize="16dp"
+        android:textColor="@color/white"
+        />
+
 
 
 
